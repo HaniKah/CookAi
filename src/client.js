@@ -1,9 +1,9 @@
 import * as contentful from "contentful";
 
-// connection to contetful api for creator
+// connection to contetful api for creators
 export const client = contentful.createClient({
-  accessToken: process.env.CONTENTEFUL_ACCES_TOKEN,
-  space: process.env.CONTENTEFUL_SPACE_ID,
+  accessToken: "wzappeuI9_bNiD5FbCdWdOsrvA-CQC3wpiwzSNHeWEc",
+  space: "hbi2916vb08c",
 });
 
 export const edamam = () => {

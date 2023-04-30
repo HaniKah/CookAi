@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Creators from "./components/Creators";
 
 function App() {
   return <div className="App"></div>;
