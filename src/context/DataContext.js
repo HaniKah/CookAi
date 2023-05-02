@@ -39,7 +39,7 @@ export default function DataContextProvider(props) {
       console.error(error);
     }
     console.log("data fetched", url);
-    console.log(recipes);
+    recipes && console.log(recipes);
   };
 
   //fetching data from Edamam
