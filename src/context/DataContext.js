@@ -1,6 +1,5 @@
 import { useState, useEffect, createContext } from "react";
 import { client } from "../client";
-import { searchTerm } from "../components/CookAi";
 
 export const DataContext = createContext();
 
@@ -27,21 +26,22 @@ export default function DataContextProvider(props) {
       if (searchTerm) {
         url =
           url +
-          searchTerm +
+          searchTerm.join('%20') +
           "&app_id=bd543d60" +
           "&app_key=dad85576fd508039445ae12bd216a1f4";
-      }
+        console.log(url)
+        }
 
       const recipesResponse = await fetch(url);
       const recipesData = await recipesResponse.json();
       setRecipes(recipesData.hits);
+      
     } catch (error) {
       console.error(error);
     }
     console.log("data fetched", url);
-    recipes && console.log(recipes);
   };
-
+  recipes && console.log(recipes);
   //fetching data from Edamam
   useEffect(() => {
     fetchRecipes();
@@ -49,7 +49,7 @@ export default function DataContextProvider(props) {
 
   return (
     <DataContext.Provider
-      value={{ creators, recipes, fetchRecipes, setSearchTerm }}
+      value={{ creators, recipes, fetchRecipes, setSearchTerm, searchTerm }}
     >
       {props.children}
     </DataContext.Provider>
