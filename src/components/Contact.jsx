@@ -3,6 +3,12 @@ import { DataContext } from "../context/DataContext";
 
 export default function Contact() {
   const { creators } = useContext(DataContext);
+  const [singleCreator, setSingleCreator] = useState();
+
+  const changeHandler = function (event) {
+    setSingleCreator(event.target.value);
+    console.log(singleCreator);
+  };
   return (
     <div className="contact">
       <div className="contact_container">
@@ -60,7 +66,7 @@ export default function Contact() {
               src="https://placehold.co/150x150"
             />
             <aside className="contact_aside_info">
-              <select name="" id="">
+              <select onChange={changeHandler} name="" id="">
                 <option value="" disabled selected>
                   Select a specific creator
                 </option>
