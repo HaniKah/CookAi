@@ -2,13 +2,15 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
-import Tag from "./Tag";
+import Tags from "./Tags";
 
 export default function CookAi() {
   const { setSearchTerm } = useContext(DataContext);
   const { searchTerm } = useContext(DataContext);
   const { fetchRecipes } = useContext(DataContext);
   const [inputValue, setInputValue] = useState();
+  const { setSubmitted } = useContext(DataContext);
+  const { submitted } = useContext(DataContext);
 
   const handleChange = (event) => {
     let value = event.target.value.toLowerCase().replace(/[;,]/g, ' ').replace(/[/[^_\]/"!()?:.]/g, '').replace('and', '').split(' ');
@@ -20,19 +22,9 @@ export default function CookAi() {
     event.preventDefault();
     setSearchTerm(inputValue);
     fetchRecipes(inputValue);
+    setSubmitted(!submitted);
+    event.target.reset()
   };
-
-  function createTags() {
-    if(searchTerm){
-      console.log(searchTerm)
-      inputValue.map(term => console.log("Wohin damit?"))
-      // inputValue.forEach(element => console.log("Hi"));
-    }
-  }
-
-  useEffect(() => {
-    createTags()
-  }, [searchTerm])
   
   return (
     <div className="cookAi">
@@ -740,11 +732,11 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <input onChange={handleChange} placeholder="add your ingredients" />
       </form>
       <div>
-
+        <Tags />
       </div>
     </div>
   );

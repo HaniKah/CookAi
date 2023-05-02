@@ -7,6 +7,7 @@ export default function DataContextProvider(props) {
   const [creators, setCreators] = useState();
   const [recipes, setRecipes] = useState();
   const [searchTerm, setSearchTerm] = useState();
+  const [submitted, setSubmitted] = useState(false);
 
   // fatching data from Contetful for displaying creators
   useEffect(() => {
@@ -49,7 +50,7 @@ export default function DataContextProvider(props) {
 
   return (
     <DataContext.Provider
-      value={{ creators, recipes, fetchRecipes, setSearchTerm, searchTerm }}
+      value={{ creators, recipes, fetchRecipes, setSearchTerm, searchTerm, submitted, setSubmitted}}
     >
       {props.children}
     </DataContext.Provider>
