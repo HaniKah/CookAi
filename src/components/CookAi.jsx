@@ -6,11 +6,18 @@ import { DataContext } from "../context/DataContext";
 export default function CookAi() {
   const { setSearchTerm } = useContext(DataContext);
   const { fetchRecipes } = useContext(DataContext);
+  const [inputValue, setInputValue] = useState([]);
 
   const handleChange = (event) => {
-    let value = event.target.value;
-    setSearchTerm(value);
-    fetchRecipes(value);
+    let value = event.target.value.toLowerCase();
+    setInputValue(value);
+    console.log(value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSearchTerm(inputValue);
+    fetchRecipes(inputValue);
   };
 
   return (
@@ -719,7 +726,7 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input onChange={handleChange} placeholder="add your ingredients" />
       </form>
     </div>
