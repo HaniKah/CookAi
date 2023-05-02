@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
+
 export default function Contact() {
+  const { creators } = useContext(DataContext);
   return (
     <div className="contact">
       <div className="contact_container">
