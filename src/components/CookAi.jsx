@@ -7,7 +7,8 @@ export default function CookAi() {
   const { setSearchTerm } = useContext(DataContext);
   const { fetchRecipes } = useContext(DataContext);
 
-  const handleChange = (event) => {
+  const handleSubmit = (event) => {
+    event.preventDefault()
     let value = event.target.value;
     setSearchTerm(value);
     fetchRecipes(value);
@@ -719,8 +720,8 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form>
-        <input onChange={handleChange} placeholder="add your ingredients" />
+      <form onSubmit={handleSubmit}>
+        <input onChange={(event) => event.preventDefault()} placeholder="add your ingredients" />
       </form>
     </div>
   );
