@@ -174,23 +174,24 @@ CookAi Contact page
   gap: 1em;
   /* width: 70%; */
 }
+
 .contact_aside_info input,
 select {
-  height: 100%;
+  height: 40px;
   background-color: var(--bg-color);
   border-radius: 30px;
   border: white 1px solid;
   padding: 0 1em;
-}
-.contact_aside_info select option {
-  background-color: var(--bg-color);
 }
 
 .contact_aside_img {
   background-color: var(--bg-color);
   border-radius: 50%;
   border: 1px solid white;
+  width: 150px;
+  transition: all 0.3s ease;
 }
+
 .contact_area {
   height: 200px;
   background-color: var(--bg-color);

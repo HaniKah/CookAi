@@ -1,14 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../context/DataContext";
 
 export default function Contact() {
   const { creators } = useContext(DataContext);
   const [singleCreator, setSingleCreator] = useState();
 
-  const changeHandler = function (event) {
-    setSingleCreator(event.target.value);
-    console.log(singleCreator);
+  const nameChange = function (event) {
+    setSingleCreator(
+      creators.find((creator) => creator.fields.name === event.target.value)
+    );
   };
+
+  singleCreator && console.log(singleCreator);
+  creators && console.log(creators);
+
   return (
     <div className="contact">
       <div className="contact_container">
@@ -63,17 +68,19 @@ export default function Contact() {
           <div className="contact_info">
             <img
               className="contact_aside_img"
-              src="https://placehold.co/150x150"
+              src={singleCreator?.fields.profile.fields.file.url}
+              alt=""
             />
             <aside className="contact_aside_info">
-              <select onChange={changeHandler} name="" id="">
-                <option value="" disabled selected>
-                  Select a specific creator
+              <select onChange={nameChange} name="" id="">
+                <option value="all creators" hidden>
+                  select your creator
                 </option>
-                <option value="Miroslav">Miroslav</option>
-                <option value="Stefan">Stefan</option>
-                <option value="Puritama">Puritama</option>
-                <option value="Hani">Hani</option>
+                {creators?.map((creator) => (
+                  <option value={creator.fields.name}>
+                    {creator.fields.name}
+                  </option>
+                ))}
               </select>
               <input placeholder="write your full name here" type="text" />
               <input placeholder="write your Email here" type="email" />
