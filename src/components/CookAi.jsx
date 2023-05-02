@@ -1,6 +1,18 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 export default function CookAi() {
+  const { setSearchTerm } = useContext(DataContext);
+  const { fetchRecipes } = useContext(DataContext);
+
+  const handleChange = (event) => {
+    let value = event.target.value;
+    setSearchTerm(value);
+    fetchRecipes(value);
+  };
+
   return (
     <div className="cookAi">
       <svg
@@ -707,8 +719,8 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form action="">
-        <input placeholder="add your ingredients" />
+      <form>
+        <input onChange={handleChange} placeholder="add your ingredients" />
       </form>
     </div>
   );

@@ -6,7 +6,8 @@ export const client = contentful.createClient({
   space: process.env.REACT_APP_SPACE_ID,
 });
 
+// connection to
 export const edamam = () => {
-  const appKey = process.env.APP_KEY;
-  const appId = process.env.APP_ID;
+  const appKey = process.env.REACT_APP_APP_KEY;
+  const appId = process.env.REACT_APP_APP_ID;
 };
