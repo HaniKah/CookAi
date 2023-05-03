@@ -20,9 +20,9 @@ export default function CookAi() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSearchTerm(inputValue);
     fetchRecipes(inputValue);
     setSubmitted(!submitted);
+    setSearchTerm(inputValue);
     event.target.reset()
   };
   
