@@ -231,3 +231,28 @@ Tags page
   cursor: pointer;
   color: grey;
 }
+
+/* ====================
+Recipe List
+==================== */
+.recipeList_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 3em;
+}
+
+.one_recipe {
+  background-color: var(--bg);
+  width: 250px;
+  padding: 0 1em;
+  background-color: var(--bg);
+}
+.info_recipe {
+  padding: 1em 0;
+}
+
+.img_recipe {
+  width: 200px;
+}
