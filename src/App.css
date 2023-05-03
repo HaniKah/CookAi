@@ -501,8 +501,9 @@ Recipe List
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 100px;
   margin-top: 3em;
+  padding: 5em 10em;
 }
 
 .one_recipe {
