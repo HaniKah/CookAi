@@ -15,6 +15,12 @@ body {
   font-family: "Lato", sans-serif;
   width: 100%;
   --bg: rgba(237, 237, 237, 0.5);
+  --bg_hover: rgba(255, 136, 75, 0.5);
+  --light_accent: #ff884b;
+  --dark_accent: #ff6118;
+  --text: #000;
+  --white: #fff;
+  --nav_span: rgba(0, 0, 0, 0.5);
 }
 
 .navbar {
@@ -34,14 +40,14 @@ body {
   align-items: center;
   width: 230px;
   height: 40px;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
+  border-bottom: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+  border-right: 2px solid var(--white);
   border-radius: 0px 0px 30px 30px;
-  background: rgba(237, 237, 237, 0.5);
+  background: var(--bg);
   font-size: 14px;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--nav_span);
   cursor: pointer;
   transition: all 0.3s ease;
   transform: translateY(-10px);
@@ -49,14 +55,14 @@ body {
 
 .navbar span:hover {
   align-items: center;
-  border-bottom: 2px solid #ff884b;
-  border-left: 2px solid #ff884b;
-  border-right: 2px solid #ff884b;
+  border-bottom: 2px solid var(--light_accent);
+  border-left: 2px solid var(--light_accent);
+  border-right: 2px solid var(--light_accent);
   font-size: 18px;
   padding-bottom: 0;
   border-radius: 0px 0px 30px 30px;
-  background: rgba(255, 136, 75, 0.5);
-  color: #fff;
+  background: var(--bg_hover);
+  color: var(--white);
   transform: translateY(0);
 }
 
@@ -66,16 +72,16 @@ body {
   align-items: center;
   width: 230px;
   height: 40px;
-  border-bottom: 2px solid #ff884b;
-  border-left: 2px solid #ff884b;
-  border-right: 2px solid #ff884b;
+  border-bottom: 2px solid var(--light_accent);
+  border-left: 2px solid var(--light_accent);
+  border-right: 2px solid var(--light_accent);
   border-radius: 0px 0px 30px 30px;
-  background: rgba(255, 136, 75, 0.5);
-  color: #fff;
+  background: var(--bg_hover);
+  color: var(--white);
   font-size: 18px;
   font-weight: 900;
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   transform: translateY(0);
 }
@@ -104,15 +110,15 @@ CookAi search page
 }
 
 .cookAi input {
-  border: solid 2px #ffffff;
+  border: solid 2px var(--white);
   height: 40px;
   width: 500px;
   border-radius: 20px;
-  background-color: rgba(233, 233, 233, 0.6);
+  background-color: var(--bg);
   padding: 1em;
 }
 .cookAi input::placeholder {
-  color: rgb(146, 146, 146);
+  color: var(--nav_span);
   margin: 0 2px;
 }
 
@@ -120,4 +126,74 @@ CookAi search page
   font-weight: 300;
   padding: 1em;
   font-size: large;
+}
+
+/* ====================
+Recipe page
+==================== */
+
+.recipe_left {
+  display: flex;
+  width: 40%;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1em;
+  transform: translateY(-30px);
+}
+
+.recipe {
+  display: flex;
+  max-width: 1600px;
+  justify-content: space-between;
+  margin: 60px auto;
+}
+
+.recipe_main {
+  width: 80%;
+  background-color: var(--bg);
+  border-radius: 0px 30px;
+  border: 2px solid var(--white);
+}
+
+.recipe_img {
+  width: 280px;
+  height: 350px;
+  background: var(--white);
+  border-radius: 30px 0px;
+}
+
+.recipe_serv {
+  width: 170px;
+  height: 40px;
+  background-image: linear-gradient(var(--dark_accent), var(--light_accent));
+  border-radius: 0 20px;
+  transform: translateY(-20px);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 1.2em;
+  color: var(--white);
+  font-size: 14px;
+}
+.recipe_serv:first-child {
+  width: 30%;
+}
+
+.recipe_serv button {
+  width: 2em;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 0.2em 0.7em;
+  margin: 0 0.2em;
+}
+
+.recipe_serv button:hover {
+  border: 1px solid var(--white);
+}
+
+.recipe_prep {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
 }

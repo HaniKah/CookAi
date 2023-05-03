@@ -28,8 +28,8 @@ export default function DataContextProvider(props) {
         url =
           url +
           searchTerm +
-          "&app_id=bd543d60" +
-          "&app_key=dad85576fd508039445ae12bd216a1f4";
+          `&app_id=${process.env.REACT_APP_ID}` +
+          `&app_key=${process.env.REACT_APP_KEY}`;
       }
 
       const recipesResponse = await fetch(url);
