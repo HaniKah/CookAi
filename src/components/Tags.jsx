@@ -2,22 +2,18 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../context/DataContext";
 
 export default function(){
-    const { searchTerm } = useContext(DataContext);
-    const { setSearchTerm } = useContext(DataContext);
-    const { fetchRecipes } = useContext(DataContext);
-    const { submitted } = useContext(DataContext);
-    const [ array, setArray ] = useState([]);
+    const { searchTerm, setSearchTerm, submitted, setArray, array, fetchRecipes } = useContext(DataContext);
 
     useEffect(()=>{
         if(searchTerm){
-            setArray((prev)=>[prev, ...searchTerm])
-            console.log(array)
+            setArray((prev)=>[...prev, ...searchTerm])
         }
     }, [submitted])
 
+    console.log(array)
     return(
         <div>
-            {array?.map(term => <span>{term}</span>)}
+            {array?.map((term, key) => <span key={key} className="tag">{term}</span>)}
         </div>
     )
 }
