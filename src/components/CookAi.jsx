@@ -13,7 +13,7 @@ export default function CookAi() {
   const { submitted } = useContext(DataContext);
 
   const handleChange = (event) => {
-    let value = event.target.value.toLowerCase().replace(/[;,]/g, ' ').replace(/[/[^_\]/"!()?:.]/g, '').replace('and', '').split(' ');
+    let value = event.target.value.toLowerCase().replace(/[;,]/g, ' ').replace(/[/^_#+-/"!({}$°~§)?:%²³&.=`*'><123456789]/g, '').replace('and', '').split(' ');
     const onlyWords = value.filter(word=>word.length>1)
     setInputValue(onlyWords);
   };

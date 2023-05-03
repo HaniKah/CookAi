@@ -26,7 +26,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  min-height: 110vh;
   font-family: "Lato", sans-serif;
   width: 100%;
   --bg: rgba(237, 237, 237, 0.5);
@@ -210,11 +210,24 @@ select {
 Tags page
 ==================== */
 
+.tagsContainer {
+  display: flex;
+  margin-inline: auto;
+  flex-flow: row wrap;
+  justify-content: left;
+  width: 40vw;
+}
+
 .tag {
   background-color: var(--white);
-  margin-inline: 3px;
-  margin-top: 3rem;
-  padding: 5px;
+  margin: 0.5rem 0.3rem 0 0.3rem;
+  padding: 3px;
   padding-inline: 10px;
   border-radius: 15px;
+  display: block;
+}
+
+.closeTag:hover {
+  cursor: pointer;
+  color: grey;
 }
