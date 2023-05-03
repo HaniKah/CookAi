@@ -34,6 +34,7 @@ export default function DataContextProvider(props) {
         const recipesResponse = await fetch(url);
         const recipesData = await recipesResponse.json();
         setRecipes(recipesData.hits);
+        console.log("fetched", url);
       }
     } catch (error) {
       console.error(error);
