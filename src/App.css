@@ -5,6 +5,21 @@
   margin: 0;
   box-sizing: border-box;
 }
+button {
+  background-color: var(--bg-color);
+  border: var(--white) solid 2px;
+  width: 100px;
+  height: 30px;
+  border-radius: 1em;
+}
+button:hover {
+  background-color: var(--bg_hover);
+  border: var(light_accent) solid 1px;
+  width: 100px;
+  height: 30px;
+  border-radius: 1em;
+  transition: all 0.3s ease;
+}
 
 body {
   background: url(./img/bg.jpg);
@@ -87,11 +102,11 @@ body {
 }
 
 /* ====================
-CookAi search page
+Search page
 ==================== */
 
 .cookAi {
-  padding-top: 100px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,71 +144,77 @@ CookAi search page
 }
 
 /* ====================
-Recipe page
+Contact page
 ==================== */
 
-.recipe_left {
+.contact_container {
+  width: 60vw;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 100px;
   display: flex;
-  width: 40%;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-left: 1em;
-  transform: translateY(-30px);
 }
-
-.recipe {
+.contact_form {
   display: flex;
-  max-width: 1600px;
-  justify-content: space-between;
-  margin: 60px auto;
-}
-
-.recipe_main {
-  width: 80%;
-  background-color: var(--bg);
-  border-radius: 0px 30px;
-  border: 2px solid var(--white);
-}
-
-.recipe_img {
-  width: 280px;
-  height: 350px;
-  background: var(--white);
-  border-radius: 30px 0px;
-}
-
-.recipe_serv {
-  width: 170px;
-  height: 40px;
-  background-image: linear-gradient(var(--dark_accent), var(--light_accent));
-  border-radius: 0 20px;
-  transform: translateY(-20px);
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5em 1.2em;
-  color: var(--white);
-  font-size: 14px;
-}
-.recipe_serv:first-child {
-  width: 30%;
-}
-
-.recipe_serv button {
-  width: 2em;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  padding: 0.2em 0.7em;
-  margin: 0 0.2em;
-}
-
-.recipe_serv button:hover {
-  border: 1px solid var(--white);
-}
-
-.recipe_prep {
+  flex-direction: column;
+  gap: 2em;
+  padding-top: 3em;
   width: 100%;
-
+}
+.contact_info {
   display: flex;
   justify-content: space-between;
+  gap: 2em;
+}
+.contact_aside_info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  gap: 1em;
+  /* width: 70%; */
+}
+
+.contact_aside_info input,
+select {
+  height: 40px;
+  background-color: var(--bg);
+  border-radius: 30px;
+  border: var(--white) 1px solid;
+  padding: 0 1em;
+}
+
+.contact_aside_img {
+  background-color: var(--bg);
+  border-radius: 50%;
+  border: 1px solid var(--white);
+  width: 150px;
+  transition: all 0.3s ease;
+}
+
+.contact_area {
+  height: 200px;
+  background-color: var(--bg);
+  border: var(--white) 1px solid;
+  padding: 0 1em;
+  border-radius: 1em;
+}
+.contact button {
+  align-self: center;
+}
+
+/* ====================
+Tags page
+==================== */
+
+.tag {
+  background-color: var(--white);
+  margin-inline: 3px;
+  margin-top: 3rem;
+  padding: 5px;
+  padding-inline: 10px;
+  border-radius: 15px;
 }
