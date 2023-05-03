@@ -43,6 +43,7 @@ export default function DataContextProvider(props) {
   //fetching data from Edamam
   useEffect(() => {
     fetchRecipes();
+    console.log("trigger")
   }, [array]);
 
   return (
