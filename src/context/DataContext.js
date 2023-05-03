@@ -1,6 +1,5 @@
 import { useState, useEffect, createContext } from "react";
 import { client } from "../client";
-import { searchTerm } from "../components/CookAi";
 
 export const DataContext = createContext();
 
@@ -8,6 +7,8 @@ export default function DataContextProvider(props) {
   const [creators, setCreators] = useState();
   const [recipes, setRecipes] = useState();
   const [searchTerm, setSearchTerm] = useState();
+  const [submitted, setSubmitted] = useState(false);
+  const [array, setArray] = useState([]);
 
   // fatching data from Contetful for displaying creators
   useEffect(() => {
@@ -20,36 +21,43 @@ export default function DataContextProvider(props) {
   }, []);
 
   // declaring fetch function for edamam-API
-  const fetchRecipes = async (searchTerm) => {
+  const fetchRecipes = async () => {
     let url = "https://api.edamam.com/api/recipes/v2?type=public&q=";
 
     try {
-      if (searchTerm) {
+      if (array.length) {
         url =
           url +
           searchTerm +
-          "&app_id=bd543d60" +
-          "&app_key=dad85576fd508039445ae12bd216a1f4";
+          `&app_id=${process.env.REACT_APP_ID}` +
+          `&app_key=${process.env.REACT_APP_KEY}`;
+        const recipesResponse = await fetch(url);
+        const recipesData = await recipesResponse.json();
+        setRecipes(recipesData.hits);
       }
-
-      const recipesResponse = await fetch(url);
-      const recipesData = await recipesResponse.json();
-      setRecipes(recipesData.hits);
     } catch (error) {
       console.error(error);
     }
-    console.log("data fetched", url);
-    recipes && console.log(recipes);
   };
-
+  recipes && console.log(recipes);
   //fetching data from Edamam
   useEffect(() => {
     fetchRecipes();
-  }, []);
+  }, [array]);
 
   return (
     <DataContext.Provider
-      value={{ creators, recipes, fetchRecipes, setSearchTerm }}
+      value={{
+        creators,
+        recipes,
+        fetchRecipes,
+        setSearchTerm,
+        searchTerm,
+        submitted,
+        setSubmitted,
+        array,
+        setArray,
+      }}
     >
       {props.children}
     </DataContext.Provider>

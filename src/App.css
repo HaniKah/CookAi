@@ -5,6 +5,21 @@
   margin: 0;
   box-sizing: border-box;
 }
+button {
+  background-color: var(--bg-color);
+  border: var(--white) solid 2px;
+  width: 100px;
+  height: 30px;
+  border-radius: 1em;
+}
+button:hover {
+  background-color: var(--bg_hover);
+  border: var(light_accent) solid 1px;
+  width: 100px;
+  height: 30px;
+  border-radius: 1em;
+  transition: all 0.3s ease;
+}
 
 body {
   background: url(./img/bg.jpg);
@@ -15,6 +30,12 @@ body {
   font-family: "Lato", sans-serif;
   width: 100%;
   --bg: rgba(237, 237, 237, 0.5);
+  --bg_hover: rgba(255, 136, 75, 0.5);
+  --light_accent: #ff884b;
+  --dark_accent: #ff6118;
+  --text: #000;
+  --white: #fff;
+  --nav_span: rgba(0, 0, 0, 0.5);
 }
 
 .navbar {
@@ -34,14 +55,14 @@ body {
   align-items: center;
   width: 230px;
   height: 40px;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #fff;
+  border-bottom: 2px solid var(--white);
+  border-left: 2px solid var(--white);
+  border-right: 2px solid var(--white);
   border-radius: 0px 0px 30px 30px;
-  background: rgba(237, 237, 237, 0.5);
+  background: var(--bg);
   font-size: 14px;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--nav_span);
   cursor: pointer;
   transition: all 0.3s ease;
   transform: translateY(-10px);
@@ -49,14 +70,14 @@ body {
 
 .navbar span:hover {
   align-items: center;
-  border-bottom: 2px solid #ff884b;
-  border-left: 2px solid #ff884b;
-  border-right: 2px solid #ff884b;
+  border-bottom: 2px solid var(--light_accent);
+  border-left: 2px solid var(--light_accent);
+  border-right: 2px solid var(--light_accent);
   font-size: 18px;
   padding-bottom: 0;
   border-radius: 0px 0px 30px 30px;
-  background: rgba(255, 136, 75, 0.5);
-  color: #fff;
+  background: var(--bg_hover);
+  color: var(--white);
   transform: translateY(0);
 }
 
@@ -66,26 +87,26 @@ body {
   align-items: center;
   width: 230px;
   height: 40px;
-  border-bottom: 2px solid #ff884b;
-  border-left: 2px solid #ff884b;
-  border-right: 2px solid #ff884b;
+  border-bottom: 2px solid var(--light_accent);
+  border-left: 2px solid var(--light_accent);
+  border-right: 2px solid var(--light_accent);
   border-radius: 0px 0px 30px 30px;
-  background: rgba(255, 136, 75, 0.5);
-  color: #fff;
+  background: var(--bg_hover);
+  color: var(--white);
   font-size: 18px;
   font-weight: 900;
   text-decoration: none;
-  color: #fff;
+  color: var(--white);
   cursor: pointer;
   transform: translateY(0);
 }
 
 /* ====================
-CookAi search page
+Search page
 ==================== */
 
 .cookAi {
-  padding-top: 100px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,15 +125,15 @@ CookAi search page
 }
 
 .cookAi input {
-  border: solid 2px #ffffff;
+  border: solid 2px var(--white);
   height: 40px;
   width: 500px;
   border-radius: 20px;
-  background-color: rgba(233, 233, 233, 0.6);
+  background-color: var(--bg);
   padding: 1em;
 }
 .cookAi input::placeholder {
-  color: rgb(146, 146, 146);
+  color: var(--nav_span);
   margin: 0 2px;
 }
 
@@ -120,4 +141,80 @@ CookAi search page
   font-weight: 300;
   padding: 1em;
   font-size: large;
+}
+
+/* ====================
+Contact page
+==================== */
+
+.contact_container {
+  width: 60vw;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding-top: 3em;
+  width: 100%;
+}
+.contact_info {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+.contact_aside_info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+  gap: 1em;
+  /* width: 70%; */
+}
+
+.contact_aside_info input,
+select {
+  height: 40px;
+  background-color: var(--bg);
+  border-radius: 30px;
+  border: var(--white) 1px solid;
+  padding: 0 1em;
+}
+
+.contact_aside_img {
+  background-color: var(--bg);
+  border-radius: 50%;
+  border: 1px solid var(--white);
+  width: 150px;
+  transition: all 0.3s ease;
+}
+
+.contact_area {
+  height: 200px;
+  background-color: var(--bg);
+  border: var(--white) 1px solid;
+  padding: 0 1em;
+  border-radius: 1em;
+}
+.contact button {
+  align-self: center;
+}
+
+/* ====================
+Tags page
+==================== */
+
+.tag {
+  background-color: var(--white);
+  margin-inline: 3px;
+  margin-top: 3rem;
+  padding: 5px;
+  padding-inline: 10px;
+  border-radius: 15px;
 }
