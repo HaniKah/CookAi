@@ -1,6 +1,31 @@
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
+import Tags from "./Tags";
 
 export default function CookAi() {
+  const { setSearchTerm } = useContext(DataContext);
+  const { searchTerm } = useContext(DataContext);
+  const { fetchRecipes } = useContext(DataContext);
+  const [inputValue, setInputValue] = useState();
+  const { setSubmitted } = useContext(DataContext);
+  const { submitted } = useContext(DataContext);
+
+  const handleChange = (event) => {
+    let value = event.target.value.toLowerCase().replace(/[;,]/g, ' ').replace(/[/[^_\]/"!()?:.]/g, '').replace('and', '').split(' ');
+    const onlyWords = value.filter(word=>word.length>1)
+    setInputValue(onlyWords);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchRecipes(inputValue);
+    setSubmitted(!submitted);
+    setSearchTerm(inputValue);
+    event.target.reset()
+  };
+  
   return (
     <div className="cookAi">
       <svg
@@ -707,9 +732,12 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form action="">
-        <input placeholder="add your ingredients" />
+      <form onSubmit={handleSubmit} >
+        <input onChange={handleChange} placeholder="add your ingredients" />
       </form>
+      <div>
+        <Tags />
+      </div>
     </div>
   );
 }

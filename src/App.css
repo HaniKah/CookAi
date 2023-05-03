@@ -141,6 +141,7 @@ CookAi search page
   font-size: large;
 }
 
+
 /* ====================
 CookAi Contact page
 ==================== */
@@ -202,3 +203,13 @@ select {
 .contact button {
   align-self: center;
 }
+=======
+.tag{
+  background-color: white;
+  margin-inline: 3px;
+  margin-top: 3rem;
+  padding: 5px;
+  padding-inline: 10px;
+  border-radius: 15px;
+}
+
