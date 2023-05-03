@@ -8,8 +8,8 @@ export default function DataContextProvider(props) {
   const [recipes, setRecipes] = useState();
   const [searchTerm, setSearchTerm] = useState();
   const [submitted, setSubmitted] = useState(false);
-  const [ array, setArray ] = useState([]);
-  
+  const [array, setArray] = useState([]);
+
   // fatching data from Contetful for displaying creators
   useEffect(() => {
     client
@@ -28,14 +28,13 @@ export default function DataContextProvider(props) {
       if (array.length) {
         url =
           url +
-          array.join('%20') +
-          "&app_id=bd543d60" +
-          "&app_key=dad85576fd508039445ae12bd216a1f4";
-          console.log("INSIDE IF",url)
-          const recipesResponse = await fetch(url);
-          const recipesData = await recipesResponse.json();
-          setRecipes(recipesData.hits);
-        }
+          searchTerm +
+          `&app_id=${process.env.REACT_APP_ID}` +
+          `&app_key=${process.env.REACT_APP_KEY}`;
+        const recipesResponse = await fetch(url);
+        const recipesData = await recipesResponse.json();
+        setRecipes(recipesData.hits);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -46,10 +45,19 @@ export default function DataContextProvider(props) {
     fetchRecipes();
   }, [array]);
 
-
   return (
     <DataContext.Provider
-      value={{ creators, recipes, fetchRecipes, setSearchTerm, searchTerm, submitted, setSubmitted, array, setArray}}
+      value={{
+        creators,
+        recipes,
+        fetchRecipes,
+        setSearchTerm,
+        searchTerm,
+        submitted,
+        setSubmitted,
+        array,
+        setArray,
+      }}
     >
       {props.children}
     </DataContext.Provider>

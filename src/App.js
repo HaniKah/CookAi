@@ -3,6 +3,7 @@ import "./App.css";
 import CookAi from "./components/CookAi";
 import Creators from "./components/Creators";
 import Contact from "./components/Contact";
+import Recipe from "./components/Recipe";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<CookAi />} />
-        <Route path="/creators" element={<Creators />} />
+        <Route path="/creators" element={<Recipe />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
