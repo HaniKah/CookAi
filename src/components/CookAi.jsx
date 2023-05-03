@@ -13,6 +13,7 @@ export default function CookAi() {
   const { submitted } = useContext(DataContext);
 
   const handleChange = (event) => {
+<<<<<<< HEAD
     let value = event.target.value
       .toLowerCase()
       .replace(/[;,]/g, " ")
@@ -20,6 +21,10 @@ export default function CookAi() {
       .replace("and", "")
       .split(" ");
     const onlyWords = value.filter((word) => word.length > 1);
+=======
+    let value = event.target.value.toLowerCase().replace(/[;,]/g, ' ').replace(/[/[^_\]/"!()?:.]/g, '').replace('and', '').split(' ');
+    const onlyWords = value.filter(word=>word.length>1)
+>>>>>>> parent of e63a652 (checking changes)
     setInputValue(onlyWords);
   };
 
@@ -28,10 +33,14 @@ export default function CookAi() {
     fetchRecipes(inputValue);
     setSubmitted(!submitted);
     setSearchTerm(inputValue);
+<<<<<<< HEAD
     event.target.reset();
     setInputValue([]);
+=======
+    event.target.reset()
+>>>>>>> parent of e63a652 (checking changes)
   };
-
+  
   return (
     <div className="cookAi">
       <svg
@@ -738,7 +747,7 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <input onChange={handleChange} placeholder="add your ingredients" />
       </form>
       <div>
