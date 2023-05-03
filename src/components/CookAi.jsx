@@ -16,7 +16,7 @@ export default function CookAi() {
     let value = event.target.value
       .toLowerCase()
       .replace(/[;,]/g, " ")
-      .replace(/[/[^_\]/"!()?:.]/g, "")
+      .replace(/[/^_#+-/"!({}$°~§)?:%²³&.=`*'><123456789]/g, "")
       .replace("and", "")
       .split(" ");
     const onlyWords = value.filter((word) => word.length > 1);
@@ -29,6 +29,7 @@ export default function CookAi() {
     setSubmitted(!submitted);
     setSearchTerm(inputValue);
     event.target.reset();
+    setInputValue([]);
   };
 
   return (
