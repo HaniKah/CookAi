@@ -24,6 +24,7 @@ export default function CookAi() {
     setSubmitted(!submitted);
     setSearchTerm(inputValue);
     event.target.reset()
+    setInputValue([])
   };
   
   return (
