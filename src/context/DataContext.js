@@ -28,7 +28,7 @@ export default function DataContextProvider(props) {
       if (array.length) {
         url =
           url +
-          searchTerm +
+          array.join("%20") +
           `&app_id=${process.env.REACT_APP_ID}` +
           `&app_key=${process.env.REACT_APP_KEY}`;
         const recipesResponse = await fetch(url);
@@ -39,11 +39,12 @@ export default function DataContextProvider(props) {
       console.error(error);
     }
   };
+
   recipes && console.log(recipes);
   //fetching data from Edamam
   useEffect(() => {
+    console.log(`MySearchTerm${searchTerm}`);
     fetchRecipes();
-    console.log("trigger");
   }, [array]);
 
   return (
