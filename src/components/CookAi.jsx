@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import Tags from "./Tags";
 import RecipeList from "./RecipeList";
+import TypeWriterAi from "./TypeWriterAi";
 
 export default function CookAi() {
   const { setSearchTerm } = useContext(DataContext);
@@ -738,12 +739,18 @@ export default function CookAi() {
           </clipPath>
         </defs>
       </svg>
-      <h5>givemeingriedentstomakeamealforyou</h5>
+      <h5>
+        <TypeWriterAi />
+      </h5>
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} placeholder="add your ingredients" />
+        <input
+          className="cookAi_input"
+          onChange={handleChange}
+          placeholder="add your ingredients"
+        />
+        <Tags />
       </form>
       <div>
-        <Tags />
         <RecipeList />
       </div>
     </div>
