@@ -127,8 +127,37 @@ Search page
   max-width: 200px;
   width: 20%;
   padding: 1em;
-  display: block;
+  /* display: block; */
+  /* transition: opacity 0.5s, visibility 0.5s;
+  opacity: 1;
+  visibility: visible; */
 }
+
+.hide {
+  /* display: block; */
+  display: none;
+  /* opacity: 1; */
+  /* transition: all 0.3s ease; */
+  /* animation-name: hide;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; */
+  /* opacity: 0;
+  visibility: hidden; */
+}
+/* @keyframes hide {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  95% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    display: none;
+  }
+} */
 
 .cookAi_input {
   border: solid 2px var(--white);
@@ -556,28 +585,41 @@ Recipe List
 
 .one_recipe {
   background-color: var(--bg);
-  width: 280px;
-  height: 440px;
+  width: 230px;
+  height: fit-content;
+  min-height: 300px;
   padding: 0 1em;
   background-color: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 45px 0px 45px 0px;
-  border: white 1px solid;
+  border-radius: 30px 0px 30px 0px;
+  border: var(--white) 2px solid;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.one_recipe:hover {
+  transform: scale(1.2);
+  background-color: var(--bg_hover);
+  border: var(--light_accent) 2px solid;
+  color: var(--white);
 }
 .info_recipe {
   margin-top: 2em;
-  padding: 1em 0;
-  align-self: flex-start;
+  padding: 1em 1em;
+  position: absolute;
+  top: 150px;
+  left: 0px;
 }
 
 .img_recipe {
   width: 200px;
 }
-.recipeList_img {
-  width: 340px;
-  height: 220px;
-  transform: translateY(15px);
+/* .recipeList_img {
+  width: 260px;
+  height: 130px;
   box-shadow: 5px 5px 10px grey;
-}
+  position: absolute;
+  top: 10px;
+} */

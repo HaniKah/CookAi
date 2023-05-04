@@ -33,7 +33,7 @@ export default function () {
   }
 
   return (
-    <div class="tagsContainer">
+    <div className="tagsContainer">
       {array?.map((term, index) => (
         <span key={index} className="tag">
           {term}
