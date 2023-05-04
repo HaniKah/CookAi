@@ -110,7 +110,7 @@ Search page
 ==================== */
 
 .cookAi {
-  margin-top: 100px;
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,17 +118,33 @@ Search page
 }
 
 .logo_txt {
-  width: 300px;
-  padding: 1em;
+  max-width: 300px;
+  width: 30%;
+  padding-top: 1em;
   display: block;
 }
 .logo_img {
-  width: 200px;
+  max-width: 200px;
+  width: 20%;
   padding: 1em;
   display: block;
 }
 
-.cookAi input {
+.cookAi_input {
+  border: solid 2px var(--white);
+  height: 40px;
+  width: 500px;
+  border-radius: 20px;
+  background-color: var(--bg);
+  padding: 1em;
+  opacity: 0;
+  animation-name: searchbar;
+  animation-duration: 3s;
+  animation-delay: 7s;
+  animation-fill-mode: forwards;
+}
+
+#cookai_input {
   border: solid 2px var(--white);
   height: 40px;
   width: 500px;
@@ -136,7 +152,17 @@ Search page
   background-color: var(--bg);
   padding: 1em;
 }
-.cookAi input::placeholder {
+
+@keyframes searchbar {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cookAi_input::placeholder {
   color: var(--nav_span);
   margin: 0 2px;
 }
@@ -145,6 +171,18 @@ Search page
   font-weight: 300;
   padding: 1em;
   font-size: large;
+}
+
+/* ====================
+Typewriter Component
+==================== */
+
+.typewriterai {
+  text-align: center;
+}
+
+.Typewriter__cursor {
+  color: var(--light_accent);
 }
 
 /* ====================
@@ -473,23 +511,73 @@ Tags page
 ==================== */
 
 .tagsContainer {
+  max-width: 500px;
   display: flex;
-  margin-inline: auto;
+  margin-top: 10px;
   flex-flow: row wrap;
   justify-content: left;
-  width: 40vw;
+  gap: 5px;
 }
 
 .tag {
-  background-color: var(--white);
-  margin: 0.5rem 0.3rem 0 0.3rem;
-  padding: 3px;
+  background-color: var(--bg);
+  padding: 5px;
   padding-inline: 10px;
   border-radius: 15px;
+  border: 2px solid var(--white);
   display: block;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .closeTag:hover {
   cursor: pointer;
-  color: grey;
+  transition: all 0.3s ease;
+}
+
+.closeTag:hover {
+  color: var(--dark_accent);
+}
+
+/* ====================
+Recipe List
+==================== */
+.recipeList_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 100px;
+  margin-top: 3em;
+  padding: 5em 10em;
+}
+
+.one_recipe {
+  background-color: var(--bg);
+  width: 280px;
+  height: 440px;
+  padding: 0 1em;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 45px 0px 45px 0px;
+  border: white 1px solid;
+}
+.info_recipe {
+  margin-top: 2em;
+  padding: 1em 0;
+  align-self: flex-start;
+}
+
+.img_recipe {
+  width: 200px;
+}
+.recipeList_img {
+  width: 340px;
+  height: 220px;
+  transform: translateY(15px);
+  box-shadow: 5px 5px 10px grey;
 }
