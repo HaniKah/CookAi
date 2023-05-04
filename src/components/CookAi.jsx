@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
+import { ThemeContext } from "../context/ThemeContext";
 import Tags from "./Tags";
 import RecipeList from "./RecipeList";
 import TypeWriterAi from "./TypeWriterAi";
@@ -10,9 +11,11 @@ export default function CookAi() {
   const { setSearchTerm } = useContext(DataContext);
   const { searchTerm } = useContext(DataContext);
   const { fetchRecipes } = useContext(DataContext);
-  const [inputValue, setInputValue] = useState();
   const { setSubmitted } = useContext(DataContext);
   const { submitted } = useContext(DataContext);
+  const { hide, afterSubmission } = useContext(ThemeContext);
+
+  const [inputValue, setInputValue] = useState();
 
   const handleChange = (event) => {
     let value = event.target.value
@@ -32,17 +35,18 @@ export default function CookAi() {
     setSearchTerm(inputValue);
     event.target.reset();
     setInputValue([]);
+    afterSubmission();
   };
 
   return (
     <div className="cookAi">
       <svg
-        className="logo_img"
+        className={`logo_img ${hide ? "hide" : ""}`}
         viewBox="0 0 307 330"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_11_148)">
+        <g clipPath="url(#clip0_11_148)">
           <path
             d="M116.409 0C102.879 0 86.8005 4.76336 73.3909 12.7604C56.9105 22.475 45.3648 39.6365 40.0009 62.3664C39.3573 64.9024 38.7807 67.4518 38.2175 69.9073C38.07 70.5379 37.9225 71.182 37.7884 71.8126C34.0605 77.1932 33.457 84.6938 36.2731 91.7248C36.8899 93.241 37.5872 94.5694 38.4052 95.7368C38.5795 100.353 39.6925 104.955 41.704 109.369C40.4971 109.477 38.2175 109.866 35.8305 111.275C32.9072 113.006 29.3269 116.561 28.8575 123.686C28.7637 125.122 29.1123 126.544 29.823 127.752C29.3537 127.94 28.8978 128.181 28.4821 128.476C21.2677 133.441 21.67 141.868 21.737 142.82V142.847C21.9382 145.41 23.5205 147.677 25.8404 148.751C30.5337 150.925 36.1256 153.259 42.4817 155.688C42.6426 156.48 42.8438 157.218 43.0583 157.889C41.5833 160.747 40.2289 164.826 41.0469 169.374C40.8323 171.011 40.7519 172.487 40.886 174.07C34.1812 180.028 28.8307 185.932 24.6067 192.051C23.7887 192.788 22.9439 193.795 21.8711 195.07C20.5168 196.666 18.8942 198.666 17.7141 200.128L17.285 200.651C16.5609 201.456 15.4345 202.825 14.8043 203.63C5.10909 215.599 -0.0133834 228.534 2.62603e-05 241.066C0.0134359 254.739 6.19527 267.285 17.8616 277.375H17.8751L17.8885 277.402C27.1947 285.318 38.5795 291.343 52.6462 295.811C56.9641 298.991 61.6843 301.93 66.7397 304.573C67.7857 311.067 71.5672 316.971 77.0249 320.46C80.1494 322.486 83.77 323.828 88.0879 324.552H88.1415L88.1951 324.566C89.6031 324.767 91.0112 324.874 92.3924 324.874C95.1547 324.874 97.8099 324.458 100.304 323.653H100.344L100.384 323.626C103.643 322.513 106.607 320.768 109.074 318.487C116.865 319.829 124.83 320.634 132.822 320.862C134.016 321.882 135.343 322.862 136.778 323.788H136.792L136.805 323.814C143.161 327.867 150.63 330 158.395 330C159.078 330 159.762 329.987 160.446 329.946C169.297 329.53 178.013 324.767 183.725 317.199C184.49 316.193 185.174 315.213 185.777 314.234C195.311 311.537 204.644 308.075 213.589 303.916C217.115 305.593 221.111 306.478 225.295 306.478C228.996 306.478 232.805 305.781 236.291 304.466C245.986 301.004 252.718 291.866 253.429 281.186C253.509 280.112 253.536 279.092 253.509 278.1C264.022 268.761 272.51 258.442 278.773 247.373C295.575 232.237 305.002 216.069 306.812 199.296V199.269V199.243C307.831 188.642 304.72 177.479 298.297 168.609C295.454 164.718 292.035 161.082 288.387 158.09C283.48 153.957 278.035 150.75 272.779 147.664L272.256 147.355C270.968 146.537 256.432 137.413 247.931 134.192C243.412 132.475 238.557 130.972 233.073 129.617C231.155 129.134 229.224 128.718 227.347 128.315C225.751 127.98 224.209 127.645 222.694 127.282C222.506 126.638 222.318 125.994 222.13 125.377L222.104 125.283L222.077 125.189C221.929 124.773 221.795 124.344 221.661 123.928C221.098 122.197 220.454 120.224 218.926 118.225L218.899 118.185L218.872 118.145C216.74 115.488 213.964 113.556 210.598 112.402L208.949 109.423C208.198 108.054 206.978 106.941 205.543 106.297C205.436 106.243 205.315 106.189 205.181 106.122C204.953 105.975 204.711 105.854 204.47 105.733C201.56 103.989 200.581 101.372 200.487 101.117C199.723 98.6485 197.698 96.7565 195.191 96.1527L194.024 95.8709C193.193 93.8717 192.08 92.02 190.739 90.3562C191.034 88.9339 191.235 87.525 191.342 86.1564V86.0088L191.355 85.8612C191.436 81.5943 191.235 76.6968 187.735 72.6043C187.534 72.3762 187.332 72.1615 187.118 71.9468C189.277 66.6602 190.739 61.5614 191.57 56.4491V56.4223V56.3955C192.267 51.7394 192.214 47.4591 191.422 43.6484C191.262 42.897 191.007 41.8639 190.457 40.7368L190.417 40.6563L190.376 40.5757C188.258 36.5772 184.57 34.3767 179.971 34.3767C178.04 34.3767 175.961 34.7524 173.722 35.5306C167.822 26.0978 160.312 17.9532 151.945 11.9285C141.887 4.6426 131.106 0.684313 119.882 0.107343C118.756 0.0402537 117.576 0 116.409 0Z"
             fill="white"
@@ -593,8 +597,8 @@ export default function CookAi() {
             y2="204.495"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FF00FF" />
-            <stop offset="1" stop-color="#6400EB" />
+            <stop stopColor="#FF00FF" />
+            <stop offset="1" stopColor="#6400EB" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_11_148"
@@ -604,8 +608,8 @@ export default function CookAi() {
             y2="240.052"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FF00FF" />
-            <stop offset="1" stop-color="#6400EB" />
+            <stop stopColor="#FF00FF" />
+            <stop offset="1" stopColor="#6400EB" />
           </linearGradient>
           <linearGradient
             id="paint2_linear_11_148"
@@ -615,8 +619,8 @@ export default function CookAi() {
             y2="250.016"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FF00FF" />
-            <stop offset="1" stop-color="#6400EB" />
+            <stop stopColor="#FF00FF" />
+            <stop offset="1" stopColor="#6400EB" />
           </linearGradient>
           <linearGradient
             id="paint3_linear_11_148"
@@ -626,8 +630,8 @@ export default function CookAi() {
             y2="328.776"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FF00FF" />
-            <stop offset="1" stop-color="#6400EB" />
+            <stop stopColor="#FF00FF" />
+            <stop offset="1" stopColor="#6400EB" />
           </linearGradient>
           <linearGradient
             id="paint4_linear_11_148"
@@ -637,12 +641,12 @@ export default function CookAi() {
             y2="221.731"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#E43C37" />
-            <stop offset="0.03" stop-color="#DE3731" />
-            <stop offset="0.16" stop-color="#D02A1F" />
-            <stop offset="0.31" stop-color="#C52013" />
-            <stop offset="0.51" stop-color="#BF1B0C" />
-            <stop offset="1" stop-color="#BE1A0A" />
+            <stop stopColor="#E43C37" />
+            <stop offset="0.03" stopColor="#DE3731" />
+            <stop offset="0.16" stopColor="#D02A1F" />
+            <stop offset="0.31" stopColor="#C52013" />
+            <stop offset="0.51" stopColor="#BF1B0C" />
+            <stop offset="1" stopColor="#BE1A0A" />
           </linearGradient>
           <linearGradient
             id="paint5_linear_11_148"
@@ -652,8 +656,8 @@ export default function CookAi() {
             y2="210.138"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FF00FF" />
-            <stop offset="1" stop-color="#6400EB" />
+            <stop stopColor="#FF00FF" />
+            <stop offset="1" stopColor="#6400EB" />
           </linearGradient>
           <linearGradient
             id="paint6_linear_11_148"
@@ -663,8 +667,8 @@ export default function CookAi() {
             y2="237.524"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FF00FF" />
-            <stop offset="1" stop-color="#6400EB" />
+            <stop stopColor="#FF00FF" />
+            <stop offset="1" stopColor="#6400EB" />
           </linearGradient>
           <linearGradient
             id="paint7_linear_11_148"
@@ -674,8 +678,8 @@ export default function CookAi() {
             y2="164.222"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FF00FF" />
-            <stop offset="1" stop-color="#6400EB" />
+            <stop stopColor="#FF00FF" />
+            <stop offset="1" stopColor="#6400EB" />
           </linearGradient>
           <linearGradient
             id="paint8_linear_11_148"
@@ -685,7 +689,7 @@ export default function CookAi() {
             y2="348.037"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#BE1A0A" />
+            <stop stopColor="#BE1A0A" />
             <stop offset="1" />
           </linearGradient>
           <clipPath id="clip0_11_148">
@@ -699,7 +703,7 @@ export default function CookAi() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_3_167)">
+        <g clipPath="url(#clip0_3_167)">
           <path
             d="M55.7927 61.3945C55.9197 61.3945 56.1031 61.4792 56.343 61.6485L57.3872 62.735C55.9338 64.1884 54.3534 65.5289 52.6743 66.7283C50.981 67.9418 49.1325 68.9718 47.1148 69.8326C45.097 70.6933 42.8816 71.3565 40.4828 71.8363C38.0841 72.316 35.4454 72.5559 32.5669 72.5559C27.8399 72.5559 23.4798 71.7234 19.4865 70.0442C15.4933 68.3792 12.0644 65.9945 9.18589 62.8902C6.30736 59.8 4.04969 56.0467 2.4411 51.6442C0.818394 47.2418 0.0140991 42.3172 0.0140991 36.8565C0.0140991 31.3957 0.818394 26.6687 2.4411 22.2945C4.0638 17.9061 6.34969 14.1528 9.31288 11.0203C12.2761 7.88774 15.8178 5.47485 19.938 3.75338C24.0583 2.0319 28.6019 1.17117 33.5687 1.17117C38.2393 1.17117 42.3736 1.87669 45.9718 3.30184C49.5841 4.727 52.9424 6.77301 56.0467 9.45399L55.2988 10.5405C55.1718 10.7663 54.9037 10.8933 54.5086 10.8933C54.3111 10.8933 53.9724 10.7098 53.4927 10.343C53.0129 9.97608 52.3779 9.52455 51.6019 8.97424C50.8258 8.42393 49.8804 7.83129 48.7798 7.18221C47.6651 6.53313 46.3669 5.94049 44.8853 5.39019C43.3896 4.83988 41.7105 4.38835 39.8197 4.02147C37.9289 3.6546 35.8546 3.47117 33.5687 3.47117C29.0675 3.47117 24.9331 4.24724 21.1656 5.79939C17.3982 7.35154 14.1528 9.56688 11.4294 12.4454C8.72024 15.3239 6.60367 18.8233 5.10797 22.9436C3.59815 27.0638 2.8503 31.692 2.8503 36.8141C2.8503 41.9362 3.59815 46.7197 5.10797 50.8399C6.61779 54.9602 8.70613 58.4454 11.3871 61.3099C14.0681 64.1743 17.2288 66.3614 20.8693 67.8853C24.5098 69.4093 28.4607 70.1712 32.7362 70.1712C35.4172 70.1712 37.816 69.9878 39.9325 69.6209C42.0491 69.254 43.9963 68.7178 45.7602 67.9841C47.524 67.2504 49.1749 66.3614 50.6706 65.3031C52.1804 64.2448 53.6761 63.0313 55.1577 61.6767C55.3835 61.451 55.6092 61.324 55.8068 61.324L55.7927 61.3945Z"
             fill="#332C2B"
