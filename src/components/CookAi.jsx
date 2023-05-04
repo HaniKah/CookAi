@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import Tags from "./Tags";
+import RecipeList from "./RecipeList";
 
 export default function CookAi() {
   const { setSearchTerm } = useContext(DataContext);
@@ -13,8 +14,13 @@ export default function CookAi() {
   const { submitted } = useContext(DataContext);
 
   const handleChange = (event) => {
-    let value = event.target.value.toLowerCase().replace(/[;,]/g, ' ').replace(/[/^_#+-/"!({}$°~§)?:%²³&.=`*'><123456789]/g, '').replace('and', '').split(' ');
-    const onlyWords = value.filter(word=>word.length>1)
+    let value = event.target.value
+      .toLowerCase()
+      .replace(/[;,]/g, " ")
+      .replace(/[/^_#+-/"!({}$°~§)?:%²³&.=`*'><123456789]/g, "")
+      .replace("and", "")
+      .split(" ");
+    const onlyWords = value.filter((word) => word.length > 1);
     setInputValue(onlyWords);
   };
 
@@ -23,10 +29,10 @@ export default function CookAi() {
     fetchRecipes(inputValue);
     setSubmitted(!submitted);
     setSearchTerm(inputValue);
-    event.target.reset()
-    setInputValue([])
+    event.target.reset();
+    setInputValue([]);
   };
-  
+
   return (
     <div className="cookAi">
       <svg
@@ -733,11 +739,12 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <input onChange={handleChange} placeholder="add your ingredients" />
       </form>
       <div>
         <Tags />
+        <RecipeList />
       </div>
     </div>
   );
