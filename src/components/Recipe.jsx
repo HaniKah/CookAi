@@ -137,15 +137,14 @@ export default function Recipe() {
               </clipPath>
             </defs>
           </svg>
-          {/* {recipes?.map((recipe) => {
+          {recipes?.slice(4, 8).map((recipe) => (
             <>
               <div className="recipe_img">
-                <p>HELLO</p>
                 <img src={recipe.recipe.image} />
               </div>
               <div className="recipe_title">{recipe.recipe.label}</div>
-            </>;
-          })} */}
+            </>
+          ))}
         </div>
       </div>
     </div>
