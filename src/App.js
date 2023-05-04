@@ -4,6 +4,7 @@ import CookAi from "./components/CookAi";
 import Creators from "./components/Creators";
 import Contact from "./components/Contact";
 import Recipe from "./components/Recipe";
+import TypeWriterAi from "./components/TypeWriterAi";
 
 function App() {
   return (
