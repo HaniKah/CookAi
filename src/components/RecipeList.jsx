@@ -11,7 +11,7 @@ export default function RecipeList() {
             style={{
               background: `url(${recipe.recipe.image})`,
               backgroundSize: "cover",
-              backgroundRepeat: "no - repeat",
+              backgroundRepeat: "no-repeat",
               backgroundPosition: " center",
               borderRadius: "0px 45px 0px 45px",
             }}
