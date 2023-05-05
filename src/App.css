@@ -453,9 +453,18 @@ Recipe page
   flex-direction: column;
 }
 
+.recipe_suggestions_box {
+  padding-bottom: 30px;
+}
+
+.recipe_suggestions_box  h4 {
+  padding: 10px 30px 0 30px;
+}
+
 .recipe_suggestions svg {
   width: 200px;
   margin-top: 40px;
+  padding-bottom: 30px;
 }
 
 /* ====================
