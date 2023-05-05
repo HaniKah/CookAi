@@ -1,19 +1,30 @@
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
+import { useParams, NavLink } from "react-router-dom";
 
 export default function Recipe() {
   const { recipes } = useContext(DataContext);
-
-  //console.log(recipes[0].recipe.label);
+  const params = useParams();
+  const myObject = recipes[params.id];
+  console.log("my object recipe", myObject);
 
   return (
     <div className="recipe">
       <div className="recipe_container">
         <div>
           <div className="recipe_main">
-            <div className="recipe_img"></div>
+            <div
+              className="recipe_img"
+              style={{
+                background: `url(${myObject.recipe.image})`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: " center",
+                borderRadius: "0px 30px 0px 0px",
+              }}
+            ></div>
             <div className="recipe_title">
-              {/*<h1>{recipes[0].recipe.label}</h1>*/}
+              <h1>{myObject.recipe.label}</h1>
             </div>
             <button className="recipe_back_button">go back</button>
             <div className="recipe_info">
@@ -137,15 +148,33 @@ export default function Recipe() {
               </clipPath>
             </defs>
           </svg>
-          {/* {recipes?.map((recipe) => {
-            <>
-              <div className="recipe_img">
-                <p>HELLO</p>
-                <img src={recipe.recipe.image} />
-              </div>
-              <div className="recipe_title">{recipe.recipe.label}</div>
-            </>;
-          })} */}
+          <>
+            {recipes
+              ?.slice(Number(params.id) + 1, Number(params.id) + 5)
+              .map((recipe, i) => (
+                <NavLink
+                  to={`/${i}`}
+                  className="recipe_suggestions_box"
+                  key={i}
+                >
+                  <img
+                    src={recipe.recipe.image}
+                    style={{
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: " center",
+                      borderRadius: "0px 30px 0px 30px",
+                      width: "280px",
+                      height: "170px",
+                      boxShadow: "5px 5px 10px grey",
+                      position: "relative",
+                    }}
+                    className="recipeList_img"
+                  />
+                  <h4>{recipe.recipe.label}</h4>
+                </NavLink>
+              ))}
+          </>
         </div>
       </div>
     </div>
