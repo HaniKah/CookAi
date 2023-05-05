@@ -7,7 +7,7 @@ export default function Creators() {
   return (
     <div>
       <h1>This is creator page</h1>
-      {/* {console.log(creators)} */}
+      {console.log(creators)}
     </div>
   );
 }

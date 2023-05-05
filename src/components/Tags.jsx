@@ -37,10 +37,10 @@ export default function () {
       {array?.map((term, index) => (
         <span key={index} className="tag">
           {term}
-          <icon datatext={term} className="closeTag" onClick={deleteTag}>
+          <span datatext={term} className="closeTag" onClick={deleteTag}>
             {" "}
             x
-          </icon>
+          </span>
         </span>
       ))}
     </div>

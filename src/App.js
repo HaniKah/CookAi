@@ -23,7 +23,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<CookAi />} />
-        <Route path="/creators" element={<Recipe />} />
+        <Route path="/creators" element={<Creators />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/:id" element={<Recipe />} />
       </Routes>

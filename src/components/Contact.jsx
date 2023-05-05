@@ -23,7 +23,7 @@ export default function Contact() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g clip-path="url(#clip0_3_167)">
+          <g clipPath="url(#clip0_3_167)">
             <path
               d="M55.7927 61.3945C55.9197 61.3945 56.1031 61.4792 56.343 61.6485L57.3872 62.735C55.9338 64.1884 54.3534 65.5289 52.6743 66.7283C50.981 67.9418 49.1325 68.9718 47.1148 69.8326C45.097 70.6933 42.8816 71.3565 40.4828 71.8363C38.0841 72.316 35.4454 72.5559 32.5669 72.5559C27.8399 72.5559 23.4798 71.7234 19.4865 70.0442C15.4933 68.3792 12.0644 65.9945 9.18589 62.8902C6.30736 59.8 4.04969 56.0467 2.4411 51.6442C0.818394 47.2418 0.0140991 42.3172 0.0140991 36.8565C0.0140991 31.3957 0.818394 26.6687 2.4411 22.2945C4.0638 17.9061 6.34969 14.1528 9.31288 11.0203C12.2761 7.88774 15.8178 5.47485 19.938 3.75338C24.0583 2.0319 28.6019 1.17117 33.5687 1.17117C38.2393 1.17117 42.3736 1.87669 45.9718 3.30184C49.5841 4.727 52.9424 6.77301 56.0467 9.45399L55.2988 10.5405C55.1718 10.7663 54.9037 10.8933 54.5086 10.8933C54.3111 10.8933 53.9724 10.7098 53.4927 10.343C53.0129 9.97608 52.3779 9.52455 51.6019 8.97424C50.8258 8.42393 49.8804 7.83129 48.7798 7.18221C47.6651 6.53313 46.3669 5.94049 44.8853 5.39019C43.3896 4.83988 41.7105 4.38835 39.8197 4.02147C37.9289 3.6546 35.8546 3.47117 33.5687 3.47117C29.0675 3.47117 24.9331 4.24724 21.1656 5.79939C17.3982 7.35154 14.1528 9.56688 11.4294 12.4454C8.72024 15.3239 6.60367 18.8233 5.10797 22.9436C3.59815 27.0638 2.8503 31.692 2.8503 36.8141C2.8503 41.9362 3.59815 46.7197 5.10797 50.8399C6.61779 54.9602 8.70613 58.4454 11.3871 61.3099C14.0681 64.1743 17.2288 66.3614 20.8693 67.8853C24.5098 69.4093 28.4607 70.1712 32.7362 70.1712C35.4172 70.1712 37.816 69.9878 39.9325 69.6209C42.0491 69.254 43.9963 68.7178 45.7602 67.9841C47.524 67.2504 49.1749 66.3614 50.6706 65.3031C52.1804 64.2448 53.6761 63.0313 55.1577 61.6767C55.3835 61.451 55.6092 61.324 55.8068 61.324L55.7927 61.3945Z"
               fill="#332C2B"
@@ -68,16 +68,18 @@ export default function Contact() {
           <div className="contact_info">
             <img
               className="contact_aside_img"
-              src={singleCreator?.fields.profile.fields.file.url}
+              src={
+                !singleCreator
+                  ? "./img/cookai.jpg"
+                  : singleCreator?.fields.profile.fields.file.url
+              }
               alt=""
             />
             <aside className="contact_aside_info">
               <select onChange={nameChange} name="" id="">
-                <option value="all creators" hidden>
-                  select your creator
-                </option>
-                {creators?.map((creator) => (
-                  <option value={creator.fields.name}>
+                <option value="all creators">select your creator</option>
+                {creators?.map((creator, index) => (
+                  <option key={index} value={creator.fields.name}>
                     {creator.fields.name}
                   </option>
                 ))}
@@ -86,12 +88,10 @@ export default function Contact() {
               <input placeholder="write your Email here" type="email" />
             </aside>
           </div>
-
-          <input
+          <textarea
             className="contact_area"
-            type="textarea"
             placeholder="write your message here"
-          />
+          ></textarea>
 
           <button>Send</button>
         </form>

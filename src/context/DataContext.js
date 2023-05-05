@@ -9,6 +9,7 @@ export default function DataContextProvider(props) {
   const [searchTerm, setSearchTerm] = useState();
   const [submitted, setSubmitted] = useState(false);
   const [array, setArray] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // fatching data from Contetful for displaying creators
   useEffect(() => {
@@ -33,6 +34,7 @@ export default function DataContextProvider(props) {
           `&app_key=${process.env.REACT_APP_KEY}`;
         const recipesResponse = await fetch(url);
         const recipesData = await recipesResponse.json();
+        setLoading(false);
         setRecipes(recipesData.hits);
       }
     } catch (error) {
@@ -59,6 +61,8 @@ export default function DataContextProvider(props) {
         setSubmitted,
         array,
         setArray,
+        loading,
+        setLoading,
       }}
     >
       {props.children}
