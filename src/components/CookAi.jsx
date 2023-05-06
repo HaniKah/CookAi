@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { ThemeContext } from "../context/ThemeContext";
 import Tags from "./Tags";
+import Filter from './Filter';
 import RecipeList from "./RecipeList";
 import TypeWriterAi from "./TypeWriterAi";
 import { PacmanLoader } from "react-spinners";
@@ -754,7 +755,8 @@ export default function CookAi() {
         <TypeWriterAi />
       </h5>
       <h5 className={hide ? "" : "hide"}>givemeingriedentstomakeamealforyou</h5>
-      <form onSubmit={handleSubmit}>
+      <form className="searchBar" onSubmit={handleSubmit}>
+        <Filter />
         <input
           className={hide ? "cookAi_input_hide" : "cookAi_input"}
           onChange={handleChange}

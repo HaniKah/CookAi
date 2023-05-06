@@ -27,7 +27,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  min-height: 200vh; 
   font-family: "Lato", sans-serif;
   width: 100%;
   --bg: rgba(237, 237, 237, 0.5);
@@ -606,6 +606,68 @@ Recipe page
   color: var(--white);
   background: linear-gradient(var(--dark_accent), var(--light_accent));
 }
+
+
+/* ====================
+Search page - SearchBar
+==================== */
+
+.searchBar {
+  position: relative;  
+  display: flex;
+  justify-content: center;
+}
+
+.buttonSearchBar{
+  position: absolute;
+  z-index: 5;
+  margin-top: 5px;
+}
+
+/* ====================
+Search page - Filter
+==================== */
+.buttonSearchBar {
+    background: var(--light_accent);
+    color: var(--text);
+    line-height: 36px;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-top: 2px;
+    padding-inline: 10px;
+}
+.buttonSearchBar:hover{
+    background: var(--dark_accent);
+    color: #fff;
+}
+
+/* Highest div of filter */
+.filterfield{
+  background-color: var(--bg);
+  width: 100%;
+  position: absolute;
+  right: 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Alternative = MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation8 MuiPopover-paper css-3bmhjh-MuiPaper-root-MuiPopover-paper*/
+.innerFilter{
+  color: black;
+}
+
+/*  Label of Checkbox*/
+.MuiFormControlLabel-label{
+  min-width: 170px;
+}
+
+/*  Filter-Category when selected*/
+/* .css-m5hdmq-MuiInputBase-root-MuiInput-root-MuiSelect-root:after{
+  border-bottom: 2px solid var(--light_accent) !important;
+}
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused:after{
+  color: var(--light_accent) !important;
+} */
 
 /* ====================
 Contact page
