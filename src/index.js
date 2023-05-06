@@ -5,14 +5,17 @@ import App from "./App";
 import DataContext from "./context/DataContext";
 import FilterContext from "./context/FilterContext";
 import { BrowserRouter } from "react-router-dom";
+import ThemeContext from "./context/ThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <DataContext>
+  <ThemeContext>
+    <DataContext>
     <FilterContext>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
     </FilterContext>
-  </DataContext>
+    </DataContext>
+  </ThemeContext>
 );

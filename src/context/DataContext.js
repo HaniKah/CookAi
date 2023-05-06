@@ -9,6 +9,7 @@ export default function DataContextProvider(props) {
   const [searchTerm, setSearchTerm] = useState();
   const [submitted, setSubmitted] = useState(false);
   const [array, setArray] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // fatching data from Contetful for displaying creators
   useEffect(() => {
@@ -28,11 +29,12 @@ export default function DataContextProvider(props) {
       if (array.length) {
         url =
           url +
-          array.join('%20') +
+          array.join("%20") +
           `&app_id=${process.env.REACT_APP_ID}` +
           `&app_key=${process.env.REACT_APP_KEY}`;
         const recipesResponse = await fetch(url);
         const recipesData = await recipesResponse.json();
+        setLoading(false);
         setRecipes(recipesData.hits);
       }
     } catch (error) {
@@ -43,9 +45,8 @@ export default function DataContextProvider(props) {
   recipes && console.log(recipes);
   //fetching data from Edamam
   useEffect(() => {
-    console.log(`MySearchTerm${searchTerm}`)    
+    console.log(`MySearchTerm${searchTerm}`);
     fetchRecipes();
-    console.log("trigger")
   }, [array]);
 
   return (
@@ -60,6 +61,8 @@ export default function DataContextProvider(props) {
         setSubmitted,
         array,
         setArray,
+        loading,
+        setLoading,
       }}
     >
       {props.children}
