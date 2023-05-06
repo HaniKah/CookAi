@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import Tags from "./Tags";
+import Filter from './Filter';
 
 export default function CookAi() {
   const { setSearchTerm } = useContext(DataContext);
@@ -733,7 +734,8 @@ export default function CookAi() {
         </defs>
       </svg>
       <h5>givemeingriedentstomakeamealforyou</h5>
-      <form onSubmit={handleSubmit} >
+      <form className="searchBar" onSubmit={handleSubmit} >
+        <Filter />
         <input onChange={handleChange} placeholder="add your ingredients" />
       </form>
       <div>
