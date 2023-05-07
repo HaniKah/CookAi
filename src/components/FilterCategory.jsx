@@ -8,7 +8,7 @@ import { FilterContext } from '../context/FilterContext';
 
 export default function FilterCategory() {
 
-    const {categories, setCaloriesMin, setCaloriesMax} = useContext(FilterContext)
+    const {categories, setCaloriesMin, setCaloriesMax, resetOnClick} = useContext(FilterContext)
 return (
     <div className="innerFilter">
     {categories.map((category, index) => {return(
@@ -25,6 +25,7 @@ return (
         <label for="caloriesMax">to</label>
         <input type="number" id="caloriesMax" name="caloriesMax" min="0" max="2500" placeholder="2500" onChange={(event) => setCaloriesMax(event.target.value)}></input>
     </div>
+    <button onClick={resetOnClick} >reset filters</button>
     </div>
     )
 }

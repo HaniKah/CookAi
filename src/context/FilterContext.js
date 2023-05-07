@@ -36,6 +36,20 @@ export default function FilterContextProvider(props) {
     const [checkedMeal, setCheckedMeal] = useState(meal.map((filter) => filter == false))
     const [checkedDish, setCheckedDish] = useState(dish.map((filter) => filter == false))
 
+
+    const resetOnClick = () => {
+        setDietSelectedFilters([]);
+        setCheckedDiet(diet.map((filter) => filter == false));
+        setHealthSelectedFilters([]);
+        setCheckedHealth(health.map((filter) => filter == false));
+        setCuisineSelectedFilters([]);
+        setCheckedCuisine(cuisine.map((filter) => filter == false));
+        setMealSelectedFilters([]);
+        setCheckedMeal(meal.map((filter) => filter == false));
+        setDishSelectedFilters([]);
+        setCheckedDish(dish.map((filter) => filter == false));
+    }
+
     const returnCheckedCategory = (category) => {
         if(category == "diet"){
             return checkedDiet
@@ -112,7 +126,9 @@ export default function FilterContextProvider(props) {
 
 return (
     <FilterContext.Provider
-    value={{categories, indexContent, returnCheckedCategory, changeCheckedOfCategory, updateAllSelectedFilter, caloriesMin, setCaloriesMin, caloriesMax, setCaloriesMax, dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters}}>
+    value={{categories, indexContent, returnCheckedCategory, changeCheckedOfCategory, updateAllSelectedFilter, 
+    caloriesMin, setCaloriesMin, caloriesMax, setCaloriesMax, dietSelectedFilters, healthSelectedFilters, 
+    cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters, resetOnClick}}>
     {props.children}
     </FilterContext.Provider>
     );
