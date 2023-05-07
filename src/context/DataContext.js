@@ -11,14 +11,27 @@ export default function DataContextProvider(props) {
   const [submitted, setSubmitted] = useState(false);
   const [array, setArray] = useState([]);
   const [loading, setLoading] = useState(false);
-  const conditionsForRecipeFetch = "&random=true&field=dietLabels&field=healthLabels&field=ingredients&field=cuisineType&field=mealType&field=dishType"
-  const { dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters } = useContext(FilterContext);
+  const { dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters, caloriesMax, caloriesMin } = useContext(FilterContext);
 
+  const [caloriesArray, setCaloriesArray] = useState([])
   const dietSelectedFiltersModified = dietSelectedFilters.map(i => '&diet=' + i);
   const healthSelectedFiltersModified = healthSelectedFilters.map(i => '&health=' + i);
   const cuisineSelectedFiltersModified = cuisineSelectedFilters.map(i => '&cuisine=' + i);
   const mealSelectedFiltersModified = mealSelectedFilters.map(i => '&meal=' + i);
   const dishSelectedFiltersModified = dishSelectedFilters.map(i => '&dish=' + i);
+
+
+  useEffect(() => {
+    if(caloriesMin != undefined && caloriesMax != undefined){
+      const myarray = [caloriesMin, caloriesMax]
+      function compareNumbers(a, b) {
+        return a - b;
+      }
+      myarray.sort(compareNumbers)
+      setCaloriesArray(`&calories=`+myarray.join("-"))
+    }
+  }, [caloriesMax, caloriesMin]);
+
 
   // if(healthSelectedFiltersModified.length > 0){
   //   healthSelectedFiltersModified.unshift("&health=")
@@ -33,9 +46,7 @@ export default function DataContextProvider(props) {
   //   dishSelectedFiltersModified.unshift("&dish=")
   // }
 
-  console.log(healthSelectedFiltersModified)
-
-  // fatching data from Contetful for displaying creators
+  // fetching data from Contetful for displaying creators
   useEffect(() => {
     client
       .getEntries()
@@ -60,7 +71,8 @@ export default function DataContextProvider(props) {
           healthSelectedFiltersModified.join("") +
           cuisineSelectedFiltersModified.join("") +
           mealSelectedFiltersModified.join("") +
-          dishSelectedFiltersModified.join("");
+          dishSelectedFiltersModified.join("") +
+          caloriesArray;
         const recipesResponse = await fetch(url);
         const recipesData = await recipesResponse.json();
         setLoading(false);

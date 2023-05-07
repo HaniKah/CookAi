@@ -9,6 +9,8 @@ export default function FilterContextProvider(props) {
     const [cuisineSelectedFilters, setCuisineSelectedFilters] = useState([])
     const [mealSelectedFilters, setMealSelectedFilters] = useState([])
     const [dishSelectedFilters, setDishSelectedFilters] = useState([])
+    const [caloriesMax, setCaloriesMax] = useState()
+    const [caloriesMin, setCaloriesMin] = useState()
     
     //Content for Checkboxes
     const [categories] = useState(["diet", "health", "cuisine", "meal", "dish"])
@@ -110,7 +112,7 @@ export default function FilterContextProvider(props) {
 
 return (
     <FilterContext.Provider
-    value={{categories, indexContent, returnCheckedCategory, changeCheckedOfCategory , updateAllSelectedFilter, dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters}}>
+    value={{categories, indexContent, returnCheckedCategory, changeCheckedOfCategory, updateAllSelectedFilter, caloriesMin, setCaloriesMin, caloriesMax, setCaloriesMax, dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters}}>
     {props.children}
     </FilterContext.Provider>
     );
