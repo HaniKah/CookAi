@@ -20,7 +20,7 @@ export default function DataContextProvider(props) {
   const mealSelectedFiltersModified = mealSelectedFilters.map(i => '&meal=' + i);
   const dishSelectedFiltersModified = dishSelectedFilters.map(i => '&dish=' + i);
 
-
+console.log(dietSelectedFiltersModified, dietSelectedFilters)
   useEffect(() => {
     if(caloriesMin != undefined && caloriesMax != undefined){
       const myarray = [caloriesMin, caloriesMax]
@@ -88,7 +88,7 @@ export default function DataContextProvider(props) {
   useEffect(() => {
     console.log(`MySearchTerm${searchTerm}`);
     fetchRecipes();
-  }, [array]);
+  }, [array, dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters]);
 
   return (
     <DataContext.Provider
