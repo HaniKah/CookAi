@@ -5,6 +5,7 @@ import Creators from "./components/Creators";
 import Contact from "./components/Contact";
 import Recipe from "./components/Recipe";
 import TypeWriterAi from "./components/TypeWriterAi";
+import Creator from "./components/Creator";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/creators" element={<Creators />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/:id" element={<Recipe />} />
+        <Route path="/creators/:name" element={<Creator />} />
       </Routes>
     </div>
   );
