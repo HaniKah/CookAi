@@ -27,9 +27,10 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 200vh; 
+  min-height: 200vh;
   font-family: "Lato", sans-serif;
   width: 100%;
+  color: var(--text);
   --bg: rgba(237, 237, 237, 0.5);
   --bg_hover: rgba(255, 136, 75, 0.5);
   --light_accent: #ff884b;
@@ -135,6 +136,7 @@ Search page
   padding-top: 1em;
   display: block;
 }
+
 .logo_img {
   max-width: 200px;
   width: 20%;
@@ -171,7 +173,7 @@ Search page
   border: solid 2px var(--white);
   height: 40px;
   width: 500px;
-  border-radius: 20px;
+  border-radius: 20px 0 20px 20px;
   background-color: var(--bg);
   padding: 1em;
   opacity: 0;
@@ -197,6 +199,18 @@ Search page
   100% {
     opacity: 1;
   }
+}
+
+.button_filter {
+  opacity: 0;
+  animation-name: searchbar;
+  animation-duration: 3s;
+  animation-delay: 7.5s;
+  animation-fill-mode: forwards;
+}
+
+.button_filter_hide {
+  display: none;
 }
 
 .cookAi_input::placeholder {
@@ -607,43 +621,69 @@ Recipe page
   background: linear-gradient(var(--dark_accent), var(--light_accent));
 }
 
-
 /* ====================
 Search page - SearchBar
 ==================== */
 
 .searchBar {
-  position: relative;  
+  position: relative;
   display: flex;
   justify-content: center;
-}
-
-.buttonSearchBar{
-  position: absolute;
-  z-index: 5;
-  margin-top: 5px;
 }
 
 /* ====================
 Search page - Filter
 ==================== */
 .buttonSearchBar {
-    background: var(--light_accent);
-    color: var(--text);
-    line-height: 36px;
-    text-decoration: none;
-    white-space: nowrap;
-    margin-top: 2px;
-    padding-inline: 10px;
+  position: absolute;
+  background: var(--white);
+  color: var(--text);
+  line-height: 36px;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-top: -25px;
+  margin-right: -5px;
+  padding-inline: 10px;
+  border-top: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  border-radius: 20px 0 20px 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0;
+  animation-name: searchbar;
+  animation-duration: 3s;
+  animation-delay: 7.5s;
+  animation-fill-mode: forwards;
 }
-.buttonSearchBar:hover{
-    background: var(--dark_accent);
-    color: #fff;
+
+.buttonSearchBar_hide {
+  position: absolute;
+  background: var(--white);
+  color: var(--text);
+  line-height: 36px;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-top: -25px;
+  margin-right: -5px;
+  padding-inline: 10px;
+  border-top: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  border-radius: 20px 0 20px 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.buttonSearchBar:hover {
+  background: var(--dark_accent);
+  color: #fff;
 }
 
 /* Highest div of filter */
-.filterfield{
-  background-color: var(--bg);
+.filterfield {
   width: 100%;
   position: absolute;
   right: 5px;
@@ -652,12 +692,12 @@ Search page - Filter
 }
 
 /* Alternative = MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation8 MuiPopover-paper css-3bmhjh-MuiPaper-root-MuiPopover-paper*/
-.innerFilter{
+.innerFilter {
   color: black;
 }
 
 /*  Label of Checkbox*/
-.MuiFormControlLabel-label{
+.MuiFormControlLabel-label {
   min-width: 170px;
 }
 
@@ -834,3 +874,339 @@ Recipe List
   position: absolute;
   top: 10px;
 } */
+
+/* ====================
+Creators Page
+==================== */
+
+.creators {
+  max-width: 1480px;
+  margin: 80px auto;
+}
+
+.creators_container {
+  width: 100%;
+  min-height: 400px;
+  margin-top: -35px;
+  position: relative;
+  background: var(--bg);
+  border: 2px solid var(--white);
+  border-radius: 0 30px 0 30px;
+  opacity: 0;
+  animation-name: container;
+  animation-delay: 1.8s;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes container {
+  0% {
+    opacity: 0;
+    transform: translateY(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.creators_title {
+  width: 620px;
+  height: 70px;
+  position: relative;
+  background: var(--white);
+  border-radius: 30px 0 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 0 20px;
+  z-index: 1;
+  box-shadow: 2px 2px 8px var(--shadow);
+  opacity: 0;
+  animation-name: title;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes title {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.creators_title div {
+  display: flex;
+  justify-content: center;
+}
+
+.creators_title h5 {
+  font-weight: 300;
+  font-size: large;
+}
+
+.creators_title .logo_alien svg {
+  width: 85px;
+}
+
+.creators_title .logo_txt_svg svg {
+  width: 120px;
+  margin-right: 15px;
+}
+
+.creators_links {
+  height: fit-content;
+  transform: translate(-40px, 60px);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  gap: 30px;
+}
+
+.creators_img {
+  width: 340px;
+  height: 350px;
+  position: relative;
+  box-shadow: 2px 2px 8px var(--shadow);
+  border-radius: 0 30px 30px 30px;
+}
+
+.creators_name {
+  width: 300px;
+  height: 60px;
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px;
+  background: var(--white);
+  box-shadow: 2px 2px 8px var(--shadow);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text);
+  border-radius: 30px 0 30px 0;
+  transition: all 0.3s ease;
+}
+
+.creators_link {
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+.creators_link:hover {
+  transform: translateY(10px);
+  color: var(--text);
+}
+
+.creators_link:hover .creators_name {
+  color: var(--white);
+  background: linear-gradient(var(--dark_accent), var(--light_accent));
+}
+
+/* ====================
+Creator Page
+==================== */
+
+.creator {
+  width: fit-content;
+  position: relative;
+  margin: 80px auto;
+}
+
+.creator_container {
+  max-width: 840px;
+  margin: 80px auto;
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg);
+  border: 2px solid var(--white);
+  border-radius: 0 30px 0 30px;
+  font-size: 16px;
+  opacity: 0;
+  animation-name: container_creator;
+  animation-delay: 0.6s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes container_creator {
+  0% {
+    opacity: 0;
+    transform: translateY(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.creator_container h3 {
+  display: inline;
+  color: var(--dark_accent);
+  font-size: 18px;
+}
+
+.creator_img {
+  width: 500px;
+}
+
+.creator_navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  animation-name: navigation_creator;
+  animation-delay: 1.2s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes navigation_creator {
+  0% {
+    opacity: 0;
+    transform: translateY(300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.creator_navigation_row {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  transform: translate(-20px, 15px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.creator_navigation_row:hover {
+  display: flex;
+  align-items: center;
+  transform: translate(-30px, 15px);
+}
+
+.creator_navigation_row span {
+  width: fit-content;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  font-size: 16px;
+  background: var(--dark_accent);
+  color: var(--white);
+  font-weight: 300;
+  border-radius: 0 0 30px 0;
+  transform: translateX(-220px);
+  transition: all 0.3s ease;
+}
+
+.creator_navigation_row:hover span {
+  transform: translateX(-16px);
+}
+
+.creator_navigation_txt {
+  transform: translateX(-15px);
+  padding-left: 20px;
+  overflow: hidden;
+}
+
+.creator_info {
+  width: 40%;
+  padding: 30px;
+}
+
+.creator_info_row,
+.creator_info_row_full {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.creator_info_row_full {
+  display: block;
+}
+
+.creator_info_hobbies_tag {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.creator_info_hobbies_tag .tag {
+  font-size: 14px;
+  font-weight: 900;
+  padding: 5px 15px;
+  color: var(--label_txt);
+  border-radius: 50px;
+  background: linear-gradient(var(--label_bg), var(--label_bg));
+}
+
+.creator_title {
+  width: 95%;
+  height: 70px;
+  position: absolute;
+  right: 0px;
+  bottom: -35px;
+  background: var(--white);
+  border-radius: 30px 0 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 0 20px;
+  z-index: 1;
+  box-shadow: 2px 2px 8px var(--shadow);
+  opacity: 0;
+  animation-name: title_creator;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes title_creator {
+  0% {
+    opacity: 0;
+    transform: translateX(-300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.creator_title div {
+  display: flex;
+  justify-content: center;
+}
+
+.creator_title h1 {
+  font-weight: 900;
+  font-size: 25px;
+  color: var(--dark_accent);
+}
+
+.creator_title .logo_alien svg {
+  width: 85px;
+}
+
+.creator_title .logo_txt_svg svg {
+  width: 120px;
+  margin-right: 15px;
+}
+
+.creator_title .Typewriter__cursor {
+  color: var(--shadow);
+}

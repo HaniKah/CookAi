@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { ThemeContext } from "../context/ThemeContext";
 import Tags from "./Tags";
-import Filter from './Filter';
+import Filter from "./Filter";
 import RecipeList from "./RecipeList";
 import TypeWriterAi from "./TypeWriterAi";
 import { PacmanLoader } from "react-spinners";
