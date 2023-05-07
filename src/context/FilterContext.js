@@ -4,11 +4,13 @@ export const FilterContext = createContext();
 
 export default function FilterContextProvider(props) {
 
-    const [dietSelectedFilers, setDietSelectedFilters] = useState([])
-    const [healthSelectedFilers, setHealthSelectedFilters] = useState([])
-    const [cuisineSelectedFilers, setCuisineSelectedFilters] = useState([])
-    const [mealSelectedFilers, setMealSelectedFilters] = useState([])
-    const [dishSelectedFilers, setDishSelectedFilters] = useState([])
+    const [dietSelectedFilters, setDietSelectedFilters] = useState([])
+    const [healthSelectedFilters, setHealthSelectedFilters] = useState([])
+    const [cuisineSelectedFilters, setCuisineSelectedFilters] = useState([])
+    const [mealSelectedFilters, setMealSelectedFilters] = useState([])
+    const [dishSelectedFilters, setDishSelectedFilters] = useState([])
+    const [caloriesMax, setCaloriesMax] = useState()
+    const [caloriesMin, setCaloriesMin] = useState()
     
     //Content for Checkboxes
     const [categories] = useState(["diet", "health", "cuisine", "meal", "dish"])
@@ -72,26 +74,45 @@ export default function FilterContextProvider(props) {
 
     const updateAllSelectedFilter = (categoryIndex, selecFilter) => {
         if(categoryIndex == 0){
-            setDietSelectedFilters([...dietSelectedFilers, selecFilter]);
+            const index = dietSelectedFilters.findIndex(element => element == selecFilter)
+            if(index == -1)
+            setDietSelectedFilters([...dietSelectedFilters, selecFilter]);
+            else{dietSelectedFilters.splice(index, 1);}
+            console.log(dietSelectedFilters)
         };
         if(categoryIndex == 1){
-            setHealthSelectedFilters([...healthSelectedFilers, selecFilter]);
+            const index = healthSelectedFilters.findIndex(element => element == selecFilter)
+            if(index == -1)
+            setHealthSelectedFilters([...healthSelectedFilters, selecFilter]);
+            else{healthSelectedFilters.splice(index, 1);}
+            console.log(healthSelectedFilters)
         };
         if(categoryIndex == 2){
-            setCuisineSelectedFilters([...cuisineSelectedFilers, selecFilter]);
+            const index = cuisineSelectedFilters.findIndex(element => element == selecFilter)
+            if(index == -1)
+            setCuisineSelectedFilters([...cuisineSelectedFilters, selecFilter]);
+            else{cuisineSelectedFilters.splice(index, 1);}
+            console.log(cuisineSelectedFilters)
         };
         if(categoryIndex == 3){
-            setMealSelectedFilters([...mealSelectedFilers, selecFilter]);
+            const index = mealSelectedFilters.findIndex(element => element == selecFilter)
+            if(index == -1)
+            setMealSelectedFilters([...mealSelectedFilters, selecFilter]);
+            else{mealSelectedFilters.splice(index, 1);}
+            console.log(mealSelectedFilters)
         };
         if(categoryIndex == 4){
-            setDishSelectedFilters([...dishSelectedFilers, selecFilter]);
+            const index = dishSelectedFilters.findIndex(element => element == selecFilter)
+            if(index == -1)
+            setDishSelectedFilters([...dishSelectedFilters, selecFilter]);
+            else{dishSelectedFilters.splice(index, 1);}
+            console.log(dishSelectedFilters)
         };
-        console.log(dietSelectedFilers, healthSelectedFilers, cuisineSelectedFilers, mealSelectedFilers, dishSelectedFilers);
     }
 
 return (
     <FilterContext.Provider
-    value={{categories, indexContent, returnCheckedCategory, changeCheckedOfCategory , updateAllSelectedFilter}}>
+    value={{categories, indexContent, returnCheckedCategory, changeCheckedOfCategory, updateAllSelectedFilter, caloriesMin, setCaloriesMin, caloriesMax, setCaloriesMax, dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters}}>
     {props.children}
     </FilterContext.Provider>
     );

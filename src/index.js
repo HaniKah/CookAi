@@ -10,12 +10,12 @@ import ThemeContext from "./context/ThemeContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ThemeContext>
-    <DataContext>
     <FilterContext>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+      <DataContext>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+      </DataContext>
     </FilterContext>
-    </DataContext>
   </ThemeContext>
 );
