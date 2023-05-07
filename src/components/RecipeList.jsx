@@ -14,20 +14,21 @@ export default function RecipeList() {
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: " center",
-              borderRadius: "0px 30px 0px 30px",
+              borderRadius: "30px 0px 30px 0px",
               width: "280px",
               height: "170px",
-              boxShadow: "5px 5px 10px grey",
+              boxShadow: "2px 2px 8px var(--shadow)",
               position: "absolute",
-              top: "10px",
+              pointerEvents: "none",
+              zIndex: "1",
             }}
-            className="recipeList_img"
           ></div>
 
           <div className="info_recipe">
-            <h4>{recipe.recipe.label}</h4>
-            <p>recipe paragaph</p>
+            <p>{recipe.recipe.mealType}</p>
           </div>
+
+          <h3>{recipe.recipe.label}</h3>
         </NavLink>
       ))}
     </div>
