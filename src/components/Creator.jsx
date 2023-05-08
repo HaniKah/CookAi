@@ -1,9 +1,11 @@
 import { useContext, useEffect } from "react";
 import { DataContext } from "../context/DataContext";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useNavigate } from "react-router-dom";
 import LogoTxt from "./LogoTxt";
 import LogoAlien from "./LogoAlien";
 import moment from "moment/moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Typewriter from "typewriter-effect";
 
 export default function Creator() {
@@ -11,6 +13,7 @@ export default function Creator() {
   const params = useParams();
   const creator = creators[params.name];
   const dateData = formatDate(creator.fields.birth);
+  const navigate = useNavigate();
   function formatDate(dateString) {
     const date = moment(dateString).format("DD MMM YYYY");
     return date;
@@ -70,6 +73,30 @@ export default function Creator() {
               );
             })}
           </div>
+          <div className="creator_nav_back">
+            <div
+              onClick={() => navigate("/creators")}
+              className="creator_nav_back_row"
+            >
+              <div className="creator_nav_back_icon">
+                <FontAwesomeIcon className="creator_icon" icon={faArrowLeft} />
+              </div>
+              <div className="creator_navigation_txt">
+                <span>go back</span>
+              </div>
+            </div>
+            <div
+              onClick={() => navigate("/contact")}
+              className="creator_nav_back_row"
+            >
+              <div className="creator_nav_back_icon">
+                <FontAwesomeIcon className="creator_icon" icon={faEnvelope} />
+              </div>
+              <div className="creator_navigation_txt">
+                <span>send message</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="creator_info">
           <div className="creator_info_row">
@@ -88,11 +115,7 @@ export default function Creator() {
             <h3>Hobbies</h3>
             <div className="creator_info_hobbies_tag">
               {creator.fields.hobbies.map((label, index) => {
-                return (
-                  <span className="tag" key={index}>
-                    {label}
-                  </span>
-                );
+                return <span key={index}>{label}</span>;
               })}
             </div>
           </div>
