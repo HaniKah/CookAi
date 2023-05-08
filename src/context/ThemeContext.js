@@ -64,9 +64,6 @@ export default function ThemeContextProvider(props) {
   }, [darkModeShow]);
 
   return (
-
-    <ThemeContext.Provider value={{ hide, setHide, afterSubmission }}>
-
     <ThemeContext.Provider
       value={{
         hide,
