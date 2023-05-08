@@ -1,9 +1,11 @@
 import { Popover } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FilterCategory from "./FilterCategory";
+import { ThemeContext } from "../context/ThemeContext";
 
 export default function Filter() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const { hide } = useContext(ThemeContext);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget.parentNode);
@@ -19,7 +21,10 @@ export default function Filter() {
   return (
     <>
       <div className="filterfield">
-        <span className="buttonSearchBar" onClick={handleClick}>
+        <span
+          className={hide ? "buttonSearchBar_hide" : "buttonSearchBar"}
+          onClick={handleClick}
+        >
           Add Filters
         </span>
         <Popover

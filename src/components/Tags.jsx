@@ -35,12 +35,8 @@ export default function () {
   return (
     <div className="tagsContainer">
       {array?.map((term, index) => (
-        <span key={index} className="tag">
+        <span onClick={deleteTag} key={index} className="tag">
           {term}
-          <span datatext={term} className="closeTag" onClick={deleteTag}>
-            {" "}
-            x
-          </span>
         </span>
       ))}
     </div>
