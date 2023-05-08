@@ -64,9 +64,6 @@ export default function ThemeContextProvider(props) {
   }, [darkModeShow]);
 
   return (
-<<<<<<< Updated upstream
-    <ThemeContext.Provider value={{ hide, setHide, afterSubmission }}>
-=======
     <ThemeContext.Provider
       value={{
         hide,
@@ -83,7 +80,6 @@ export default function ThemeContextProvider(props) {
         darkModeAuto,
       }}
     >
->>>>>>> Stashed changes
       {props.children}
     </ThemeContext.Provider>
   );
