@@ -1,16 +1,19 @@
 import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../context/DataContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function Contact() {
   const { creators } = useContext(DataContext);
+  const { show, toggleHandler, setShow } = useContext(ThemeContext);
   const [singleCreator, setSingleCreator] = useState();
 
   const nameChange = function (event) {
     setSingleCreator(
-      creators.find((creator) => creator.fields.name === event.target.value)
+      creators.find((creator) => creator.fields.name === event.target.innerText)
     );
+    setShow(!show);
   };
 
   singleCreator && console.log(singleCreator);
@@ -80,25 +83,30 @@ export default function Contact() {
             <aside className="contact_aside_info">
               <div className="custom-select">
                 <FontAwesomeIcon
-                  className="custom-arrow"
+                  className={`custom-arrow ${
+                    show ? "rotate" : "rotatereverse"
+                  } `}
                   icon={faCircleChevronDown}
-                  bounce
                 />
-                <select onChange={nameChange} name="" id="">
-                  <option className="custom-option" value="all creators">
-                    select your creator
-                  </option>
+                <p onClick={toggleHandler} name="" id="">
+                  select your creater
+                </p>
+                <div
+                  onClick={nameChange}
+                  className={show ? "creatorSelect" : "creatorSelect_hide"}
+                >
                   {creators?.map((creator, index) => (
-                    <option
-                      className="custom-option"
+                    <h6
+                      className="creatorOption"
                       key={index}
                       value={creator.fields.name}
                     >
                       {creator.fields.name}
-                    </option>
+                    </h6>
                   ))}
-                </select>
+                </div>
               </div>
+
               <input placeholder="write your full name here" type="text" />
               <input placeholder="write your Email here" type="email" />
             </aside>
