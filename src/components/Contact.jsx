@@ -16,9 +16,21 @@ export default function Contact() {
     setShow(!show);
   };
 
-  singleCreator && console.log(singleCreator);
-  creators && console.log(creators);
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (show && !event.target.closest(".contact_info")) {
+        setShow(false);
+      }
+    };
 
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, [show]);
+
+  console.log(show);
   return (
     <div className="contact">
       <div className="contact_container">
@@ -96,13 +108,16 @@ export default function Contact() {
                   className={show ? "creatorSelect" : "creatorSelect_hide"}
                 >
                   {creators?.map((creator, index) => (
-                    <h6
-                      className="creatorOption"
-                      key={index}
-                      value={creator.fields.name}
-                    >
-                      {creator.fields.name}
-                    </h6>
+                    <>
+                      <h6
+                        className="creatorOption"
+                        key={index}
+                        value={creator.fields.name}
+                      >
+                        {creator.fields.name}
+                      </h6>
+                      <hr className="hr" />
+                    </>
                   ))}
                 </div>
               </div>
