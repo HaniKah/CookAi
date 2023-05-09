@@ -32,6 +32,7 @@ body {
   width: 100%;
   color: var(--text);
   --bg: rgba(237, 237, 237, 0.5);
+  --bg100: rgba(237, 237, 237);
 
   --bg_hover: rgba(255, 136, 75, 0.5);
   --light_accent: #ff884b;
@@ -764,7 +765,7 @@ Contact page
 }
 .creatorSelect {
   position: absolute;
-  background: linear-gradient(var(--verylight_accent), var(--light_accent));
+  background: var(--bg100);
   color: var(--text);
   top: 50px;
   width: 100%;
@@ -788,7 +789,7 @@ Contact page
 }
 .creatorSelect_hide {
   position: absolute;
-  background: linear-gradient(var(--verylight_accent), var(--light_accent));
+  background: var(--bg100);
   color: var(--text);
   top: 50px;
   width: 100%;
@@ -845,13 +846,22 @@ Contact page
 .creatorOption {
   border-radius: 1em;
   cursor: pointer;
-  padding: 0.4em;
-  margin: 0.3em;
+  padding: 0.45em;
+  padding-left: 1em;
+  margin: 0.1em;
 }
 .creatorOption:hover {
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: var(--light_accent);
+  color: var(--white);
   transition: all 0.3s ease;
+}
+
+.hr {
+  margin: 0 0.7em;
+  color: #ff884b;
+  width: 90%;
+  border-top: solid 1px var(--label_txt);
+  opacity: 0.5;
 }
 .custom-select {
   position: relative;
