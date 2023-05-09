@@ -11,7 +11,7 @@ export default function DataContextProvider(props) {
   const [submitted, setSubmitted] = useState(false);
   const [array, setArray] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters, caloriesMax, caloriesMin } = useContext(FilterContext);
+  const { dietSelectedFilters, healthSelectedFilters, cuisineSelectedFilters, mealSelectedFilters, dishSelectedFilters, caloriesMax, caloriesMin} = useContext(FilterContext);
 
   const [caloriesArray, setCaloriesArray] = useState([])
   const dietSelectedFiltersModified = dietSelectedFilters.map(i => '&diet=' + i);
@@ -20,7 +20,14 @@ export default function DataContextProvider(props) {
   const mealSelectedFiltersModified = mealSelectedFilters.map(i => '&meal=' + i);
   const dishSelectedFiltersModified = dishSelectedFilters.map(i => '&dish=' + i);
 
-console.log(dietSelectedFiltersModified, dietSelectedFilters)
+  const [recipesNamesBreakfast, setRecipesNamesBreakfast] = useState([]);
+  const [recipesNamesDinner, setRecipesNamesDinner] = useState([]);
+  const [recipesNamesLunch, setRecipesNamesLunch] = useState([]);
+  const [recipesNamesSnack, setRecipesNamesSnack] = useState([]);
+  const [recipesNamesTeatime, setRecipesNamesTeatime] = useState([]);
+  const [recipeLabel, setRecipeLabel] = useState([]);
+  const [mealType, setMealType] = useState([]);
+  
   useEffect(() => {
     if(caloriesMin != undefined && caloriesMax != undefined){
       const myarray = [caloriesMin, caloriesMax]
@@ -31,6 +38,24 @@ console.log(dietSelectedFiltersModified, dietSelectedFilters)
       setCaloriesArray(`&calories=`+myarray.join("-"))
     }
   }, [caloriesMax, caloriesMin]);
+
+  useEffect(() => {
+    if(mealType == "breakfast"){
+      recipesNamesBreakfast.push(recipeLabel)
+    }
+    else if(mealType == "lunch"){
+      recipesNamesLunch.push(recipeLabel)
+    }
+    else if(mealType == "snack"){
+      recipesNamesSnack.push(recipeLabel)
+    }
+    else if(mealType == "teatime"){
+      recipesNamesTeatime.push(recipeLabel)
+    }
+    else{
+      recipesNamesDinner.push(recipeLabel)
+    }
+  }, [recipeLabel])
 
 
   // if(healthSelectedFiltersModified.length > 0){
@@ -104,6 +129,20 @@ console.log(dietSelectedFiltersModified, dietSelectedFilters)
         setArray,
         loading,
         setLoading,
+        setRecipesNamesBreakfast,
+        setRecipesNamesDinner,
+        setRecipesNamesLunch,
+        setRecipesNamesSnack,
+        setRecipesNamesTeatime,
+        recipesNamesBreakfast, 
+        recipesNamesDinner, 
+        recipesNamesLunch, 
+        recipesNamesSnack, 
+        recipesNamesTeatime,
+        setRecipeLabel,
+        setMealType,
+        recipeLabel, 
+        mealType
       }}
     >
       {props.children}
