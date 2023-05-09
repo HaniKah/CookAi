@@ -23,7 +23,7 @@ export default function FilterCategory() {
             </FormControl>
             )})}
             <div className="caloriesFilter">
-                <span>calories:</span>
+                <span className="caloriesFilterMainLable">calories</span>
                 <div className="caloriesFilterBlock">
                     <div className='caloriesFilterLables'>
                         <label for="caloriesMin">from </label>

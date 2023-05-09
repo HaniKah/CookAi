@@ -35,7 +35,7 @@ h3 {
   --bg100: rgba(237, 237, 237);
   --bg_hover: rgba(255, 136, 75, 0.5);
   --light_accent: #ff884b;
-  --verylight_accent: #ffc9ad;
+  --verylight_accent: #f8a67d;
   --dark_accent: #ff6118;
   --text: #000;
   --white: #fff;
@@ -44,7 +44,7 @@ h3 {
   --shadow: rgba(0, 0, 0, 0.5);
   --label_txt: rgba(90, 90, 90, 0.5);
   --label_bg: rgba(255, 255, 255, 0.5);
-  --menu: rgba(255, 255, 255, 0.935);
+  --menu: rgba(255, 255, 255, 0.966);
   --tag: #ff0000;
   --tag_bg: rgba(249, 0, 0, 0.5);
 }
@@ -71,6 +71,7 @@ h3 {
   --shadow: rgba(0, 0, 0, 0.5);
   --label_txt: rgba(90, 90, 90, 0.5);
   --label_bg: rgba(255, 255, 255, 0.5);
+  --menu: rgba(255, 255, 255, 0.935);
   --tag: #ff0000;
   --tag_bg: rgba(249, 0, 0, 0.5);
 }
@@ -708,9 +709,7 @@ Search page - Filter
   margin-top: -25px;
   margin-right: -5px;
   padding: 0 10px;
-  border-top: 2px solid var(--white);
-  border-right: 2px solid var(--white);
-  border-bottom: 2px solid var(--white);
+  border: 2px solid var(--white);
   border-radius: 20px 0 20px 0;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -762,7 +761,10 @@ Search page - Filter
 
 .outerFilter {
   width: 500px;
-  border: solid 2px var(--shadow);
+  margin-top: 15px;
+  margin-left: 5px;
+  border: solid 2px var();
+  box-shadow: 2px 2px 8px var(--shadow);
   border-radius: 20px 0 20px 20px;
   color: black;
   background-color: var(--menu);
@@ -770,22 +772,39 @@ Search page - Filter
   animation-name: searchbar;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
+  overflow: hidden;
 }
 
 .innerFilter {
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   z-index: 5;
 }
 
-.caloriesFilter {
-  margin: 5px;
-  width: fit-content;
+/*  Label of Checkbox*/
+.MuiFormControlLabel-label {
+  min-width: 173px;
+  font-size: 0.95rem !important;
+}
+
+.caloriesFilter{
+  margin-top: 13px;
+  width: 135px;
+  padding-left: 10px;
+}
+
+.caloriesFilterMainLable{
+  color: grey;
+  font-size: 0.9rem;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
 .caloriesFilterBlock {
   display: flex;
-  width: 90px;
+  margin-top: 2px;
+  font-size: small;
+  line-height: 1.2rem;
 }
 
 .caloriesFilterLables {
@@ -794,13 +813,13 @@ Search page - Filter
 
 .caloriesFilterInput {
   display: block;
-  margin-left: 10px;
   width: fit-content;
+
 }
 
-/*  Label of Checkbox*/
-.MuiFormControlLabel-label {
-  min-width: 170px;
+.caloriesFilterInput input::placeholder{
+  font-size: 0.75rem;
+  padding: 5px;
 }
 
 .resetFilters {
@@ -810,7 +829,7 @@ Search page - Filter
 
 .resetFilters button {
   margin-inline: auto;
-  background: var(--white);
+  background: var(--verylight_accent);
   color: var(--text);
   line-height: 30px;
   text-decoration: none;
@@ -821,6 +840,8 @@ Search page - Filter
   transition: all 0.3s ease;
   cursor: pointer;
   z-index: 5;
+  margin-top: 25px;
+  box-shadow: 1px 1px 2px var(--shadow);
 }
 
 .resetFilters button:hover {
