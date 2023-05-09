@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { DataContext } from "../context/DataContext";
 import { ThemeContext } from "../context/ThemeContext";
 import Tags from "./Tags";
@@ -8,6 +7,7 @@ import Filter from "./Filter";
 import RecipeList from "./RecipeList";
 import TypeWriterAi from "./TypeWriterAi";
 import { PacmanLoader } from "react-spinners";
+import LogoTxt from "./LogoTxt";
 
 export default function CookAi() {
   const {
@@ -706,7 +706,7 @@ export default function CookAi() {
         </defs>
       </svg>
       <svg
-        className="logo_txt"
+        className="logo_txt_svg"
         viewBox="0 0 301 73"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -763,14 +763,9 @@ export default function CookAi() {
           placeholder="add your ingredients"
         />
         <Tags />
-        <div>
-          <PacmanLoader
-            color="var(--dark_accent)"
-            loading={loading}
-            size={35}
-          />
-        </div>
+        <div></div>
       </form>
+      <PacmanLoader color="var(--dark_accent)" loading={loading} size={35} />
       <div>
         <RecipeList />
       </div>

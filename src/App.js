@@ -7,10 +7,11 @@ import Recipe from "./components/Recipe";
 import TypeWriterAi from "./components/TypeWriterAi";
 import Creator from "./components/Creator";
 import MealPlaner from "./components/MealPlaner";
+import DarkMod from "./components/DarkMode";
 
 function App() {
   return (
-    <div className="App">
+    <div className="cookai_app">
       <div className="navbar">
         <NavLink to="/">
           <span>CookAi</span>
@@ -24,6 +25,7 @@ function App() {
         <NavLink to="/contact">
           <span>Contact</span>
         </NavLink>
+        <DarkMod />
       </div>
 
       <Routes>
