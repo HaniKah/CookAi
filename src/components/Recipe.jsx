@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../context/DataContext";
 import { useParams, NavLink, useNavigate } from "react-router-dom";
 import LogoTxt from "./LogoTxt";
@@ -9,16 +9,25 @@ export default function Recipe() {
   const params = useParams();
   const myObject = recipes[params.id];
   const navigate = useNavigate();
+  const [addedRecipe, setAddedRecipe] = useState(false);
 
   console.log("my object recipe", myObject);
 
+  useEffect(() => {
+    setAddedRecipe(false);
+  }, []);
+
   const handleSubmitToMealPlaner = () => {
-    if(myObject){
+    if (myObject) {
       setRecipeLabel(myObject?.recipe?.label);
-      setMealType(String(myObject?.recipe?.mealType))
+      setMealType(String(myObject?.recipe?.mealType));
+      setAddedRecipe(true);
+      setTimeout(() => {
+        setAddedRecipe(false);
+      }, 1000);
     }
-  }
-  
+  };
+
   // varible for showoing imgage
   const recipeImage = {
     backgroundImage: `url(${myObject.recipe.image})`,
@@ -135,9 +144,16 @@ export default function Recipe() {
                     >
                       Go to instructions
                     </a>
-                  <div className="recipe_button" onClick={handleSubmitToMealPlaner}>
-                    Add to MealPlaner
-                  </div>
+                    <div
+                      className={
+                        addedRecipe ? "recipe_button_add" : "recipe_button"
+                      }
+                      onClick={handleSubmitToMealPlaner}
+                    >
+                      {addedRecipe
+                        ? "Added to MealPlaner"
+                        : "Add to MealPlaner"}
+                    </div>
                   </div>
                 </div>
               </div>
