@@ -5,13 +5,20 @@ import LogoTxt from "./LogoTxt";
 import LogoAlien from "./LogoAlien";
 
 export default function Recipe() {
-  const { recipes } = useContext(DataContext);
+  const { recipes, setRecipeLabel, setMealType } = useContext(DataContext);
   const params = useParams();
   const myObject = recipes[params.id];
   const navigate = useNavigate();
 
   console.log("my object recipe", myObject);
 
+  const handleSubmitToMealPlaner = () => {
+    if(myObject){
+      setRecipeLabel(myObject?.recipe?.label);
+      setMealType(String(myObject?.recipe?.mealType))
+    }
+  }
+  
   // varible for showoing imgage
   const recipeImage = {
     backgroundImage: `url(${myObject.recipe.image})`,
@@ -126,8 +133,11 @@ export default function Recipe() {
                       target="_blank"
                       className="recipe_button"
                     >
-                      go to instructions
+                      Go to instructions
                     </a>
+                  <div className="recipe_button" onClick={handleSubmitToMealPlaner}>
+                    Add to MealPlaner
+                  </div>
                   </div>
                 </div>
               </div>
