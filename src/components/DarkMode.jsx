@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function DarkMod() {
@@ -9,7 +9,22 @@ export default function DarkMod() {
     darkModeLight,
     darkModeDark,
     darkModeAuto,
+    setDarkModeShow,
   } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (darkModeShow && !event.target.closest(".darkmode_active")) {
+        setDarkModeShow(false);
+      }
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, [darkModeShow]);
 
   console.log("dark mode is", darkMode);
 
@@ -18,7 +33,7 @@ export default function DarkMod() {
       onClick={darkModeBtn}
       className={darkModeShow ? "darkmode_active" : "darkmode"}
     >
-      <fieldset>
+      <fieldset className="fieldset">
         <label onClick={darkModeLight} for="light" className="darkmode_row">
           <input
             defaultChecked={darkMode}

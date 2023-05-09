@@ -6,7 +6,6 @@ export default function ThemeContextProvider(props) {
   const [show, setShow] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
   const [darkModeShow, setDarkModeShow] = useState(false);
-  const [clickCount, setClickCount] = useState(false);
 
   const afterSubmission = function () {
     setHide(true);
@@ -44,25 +43,6 @@ export default function ThemeContextProvider(props) {
     }
   };
 
-  console.log("else", clickCount);
-
-  useEffect(() => {
-    if (clickCount === true) {
-      console.log("IF click");
-      if (darkModeShow === true) {
-        document.body.addEventListener("click", function unselect() {
-          console.log("click");
-          setDarkModeShow(false);
-          document.body.removeEventListener("click", unselect);
-        });
-      }
-    } else {
-      setClickCount(!clickCount);
-      console.log("else", clickCount);
-      console.log("DarkModeShow", darkModeShow);
-    }
-  }, [darkModeShow]);
-
   return (
     <ThemeContext.Provider
       value={{
@@ -78,6 +58,7 @@ export default function ThemeContextProvider(props) {
         darkModeLight,
         darkModeDark,
         darkModeAuto,
+        setDarkModeShow,
       }}
     >
       {props.children}
