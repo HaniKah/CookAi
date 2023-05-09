@@ -5,7 +5,7 @@ This project was created as a group project for WBS Boot Camp.
 ## Group members
 
 Hani: https://github.com/HaniKah
-Puri: https://github.com/NoCookieFace
+Puri: https://github.com/Parimaru
 Stefan: https://github.com/Occator
 Miroslav: https://github.com/mrkyns
 
