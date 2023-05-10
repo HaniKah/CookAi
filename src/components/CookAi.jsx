@@ -46,6 +46,13 @@ export default function CookAi() {
     setLoading(true);
   };
 
+  const typeWrighterStyle = {
+    fontWeight: "300",
+    padding: "1em",
+    fontSize: "large",
+    color: darkMode ? "var(--text)" : "var(--white)",
+  };
+
   return (
     <div className="cookAi">
       {darkMode ? (
@@ -74,7 +81,7 @@ export default function CookAi() {
           alt="CookAi text logo"
         />
       )}
-      <h5 className={hide ? "hide" : ""}>
+      <h5 style={typeWrighterStyle} className={hide ? "hide" : ""}>
         <TypeWriterAi />
       </h5>
       <h5 className={hide ? "" : "hide"}>givemeingriedentstomakeamealforyou</h5>

@@ -736,9 +736,7 @@ Search page - Filter
   margin-top: -40px;
   margin-right: -7px;
   padding: 0 10px;
-  border-top: 2px solid var(--white);
-  border-right: 2px solid var(--white);
-  border-bottom: 2px solid var(--white);
+  border: 2px solid var(--white);
   border-radius: 20px 0 20px 0;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -788,16 +786,16 @@ Search page - Filter
   font-size: 0.95rem !important;
 }
 
-.caloriesFilter{
+.caloriesFilter {
   margin-top: 13px;
   width: 135px;
   padding-left: 10px;
 }
 
-.caloriesFilterMainLable{
+.caloriesFilterMainLable {
   color: grey;
   font-size: 0.9rem;
-  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .caloriesFilterBlock {
@@ -814,10 +812,9 @@ Search page - Filter
 .caloriesFilterInput {
   display: block;
   width: fit-content;
-
 }
 
-.caloriesFilterInput input::placeholder{
+.caloriesFilterInput input::placeholder {
   font-size: 0.75rem;
   padding: 5px;
 }
