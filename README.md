@@ -32,7 +32,7 @@ Edamam: used as database for recepies and ingridients
 
 ## Project deploy
 
-project will be deplyed ...
+https://cookai.netlify.app/
 
 ## Project clone
 
