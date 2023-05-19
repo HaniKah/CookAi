@@ -11,24 +11,20 @@ import Typewriter from "typewriter-effect";
 export default function Creator() {
   const { creators } = useContext(DataContext);
   const params = useParams();
-  const creator = creators[params.name];
-  const dateData = formatDate(creator.fields.birth);
+  const creator = creators?.find((creator) => creator.id === Number(params.id));
+  const hobbiesArr = creator?.hobbies.split(",");
   const navigate = useNavigate();
-  function formatDate(dateString) {
-    const date = moment(dateString).format("DD MMM YYYY");
-    return date;
-  }
 
-  console.log("my param", typeof params.name);
+  console.log("my param", params.id);
   console.log("my creator", creator);
-  console.log("my sate", dateData);
+  console.log("hobbiies", hobbiesArr);
 
   return (
     <div className="creator">
       <div className="creator_container">
         <div
           style={{
-            backgroundImage: `url(${creator.fields.profile.fields.file.url})`,
+            backgroundImage: `url(${creator?.img})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: " center",
@@ -40,20 +36,20 @@ export default function Creator() {
           className="creator_img"
         >
           <div className="creator_navigation">
-            {creators.map((link, index) => {
+            {creators?.map((link) => {
               return (
                 <NavLink
-                  to={`/creators/${index}`}
-                  key={index}
+                  to={`/creators/${link.id}`}
+                  key={link.id}
                   className={
-                    index === Number(params.name)
+                    link.id === Number(params.id)
                       ? "hide"
                       : "creator_navigation_row"
                   }
                 >
                   <div
                     style={{
-                      backgroundImage: `url(${link.fields.profile.fields.file.url})`,
+                      backgroundImage: `url(${link.img})`,
                       backgroundSize: "cover",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: " center",
@@ -67,7 +63,7 @@ export default function Creator() {
                     }}
                   ></div>
                   <div className="creator_navigation_txt">
-                    <span>{link.fields.name}</span>
+                    <span>{link.name}</span>
                   </div>
                 </NavLink>
               );
@@ -101,20 +97,20 @@ export default function Creator() {
         <div className="creator_info">
           <div className="creator_info_row">
             <h3>Day of birth</h3>
-            <span>{dateData}</span>
+            <span>{creator?.date}</span>
           </div>
           <div className="creator_info_row">
             <h3>Email</h3>
-            <span>{creator.fields.email}</span>
+            <span>{creator?.email}</span>
           </div>
           <div className="creator_info_row_full">
             <h3>Bio</h3>
-            <p>{creator.fields.bio}</p>
+            <p>{creator?.bio}</p>
           </div>
           <div className="creator_info_row_full">
             <h3>Hobbies</h3>
             <div className="creator_info_hobbies_tag">
-              {creator.fields.hobbies.map((label, index) => {
+              {hobbiesArr?.map((label, index) => {
                 return <span key={index}>{label}</span>;
               })}
             </div>
@@ -124,7 +120,7 @@ export default function Creator() {
       <div className="creator_title">
         <h1>
           {
-            creator.fields.name /*
+            creator?.name /*
           useEffect(() => {
             <Typewriter
               onInit={(typewriter) => {

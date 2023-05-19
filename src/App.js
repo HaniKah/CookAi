@@ -17,7 +17,7 @@ function App() {
           <span>CookAi</span>
         </NavLink>
         <NavLink to="/mealPlaner">
-        <span>MealPlaner</span>
+          <span>MealPlaner</span>
         </NavLink>
         <NavLink to="/creators">
           <span>Creators</span>
@@ -34,7 +34,7 @@ function App() {
         <Route path="/creators" element={<Creators />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/:id" element={<Recipe />} />
-        <Route path="/creators/:name" element={<Creator />} />
+        <Route path="/creators/:id" element={<Creator />} />
       </Routes>
     </div>
   );
