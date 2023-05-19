@@ -28,11 +28,15 @@ export default function Creators() {
       </div>
       <div className="creators_container">
         <div className="creators_links">
-          {creators?.map((creator, i) => (
-            <NavLink to={`/creators/${i}`} key={i} className="creators_link">
+          {creators?.map((creator) => (
+            <NavLink
+              to={`/creators/${creator.id}`}
+              key={creator.id}
+              className="creators_link"
+            >
               <div
                 style={{
-                  backgroundImage: `url(${creator.fields.profile.fields.file.url})`,
+                  backgroundImage: `url(${creator.img})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: " center",
@@ -45,7 +49,7 @@ export default function Creators() {
                 }}
                 className="creators_img"
               >
-                <div className="creators_name">{creator.fields.name}</div>
+                <div className="creators_name">{creator.name}</div>
               </div>
             </NavLink>
           ))}

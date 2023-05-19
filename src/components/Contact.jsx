@@ -11,7 +11,7 @@ export default function Contact() {
 
   const nameChange = function (event) {
     setSingleCreator(
-      creators.find((creator) => creator.fields.name === event.target.innerText)
+      creators.find((creator) => creator.name === event.target.innerText)
     );
     setShow(!show);
   };
@@ -57,7 +57,7 @@ export default function Contact() {
                   ? darkMode
                     ? "./img/cookai.jpg"
                     : "./img/cookai_dark.jpg"
-                  : singleCreator?.fields.profile.fields.file.url
+                  : singleCreator?.img
               }
               alt="cookAi profile image"
             />
@@ -81,9 +81,9 @@ export default function Contact() {
                       <h6
                         className="creatorOption"
                         key={index}
-                        value={creator.fields.name}
+                        value={creator.name}
                       >
-                        {creator.fields.name}
+                        {creator.name}
                       </h6>
                       <hr className="hr" />
                     </>
