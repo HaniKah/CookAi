@@ -25,10 +25,7 @@ export default function Filter() {
   return (
     <>
       <div className="filterfield">
-        <span
-          className={hide ? "buttonSearchBar_hide" : "buttonSearchBar"}
-          onClick={handleClick}
-        >
+        <span className={"buttonSearchBar"} onClick={handleClick}>
           Add Filters
         </span>
         <ClickAwayListener mouseEvent="onMouseUp" onClickAway={handleClickAway}>
