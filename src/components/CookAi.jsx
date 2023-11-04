@@ -86,14 +86,16 @@ export default function CookAi() {
       </h5>
       <h5 className={hide ? "" : "hide"}>givemeingriedentstomakeamealforyou</h5>
       <form className="searchBar" onSubmit={handleSubmit}>
-        <Filter />
-        <input
-          className={hide ? "cookAi_input_hide" : "cookAi_input"}
-          onChange={handleChange}
-          placeholder="add your ingredients"
-        />
+        <div className="searchBar-div">
+          <Filter />
+          <input
+            className={"cookAi_input"}
+            onChange={handleChange}
+            placeholder="add your ingredients"
+          />
+        </div>
+
         <Tags />
-        <div></div>
       </form>
       <PacmanLoader color="var(--dark_accent)" loading={loading} size={35} />
       <div>

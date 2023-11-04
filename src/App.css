@@ -219,33 +219,33 @@ Search page
   border: solid 2px var(--white);
   height: 40px;
   width: 500px;
-  border-radius: 20px 0 20px 20px;
+  border-radius: 20px 0px 20px 20px;
   background-color: var(--bg);
   padding: 1em;
-  opacity: 0;
+  outline: none;
   animation-name: searchbar;
   animation-duration: 3s;
-  animation-delay: 7s;
+  animation-delay: 0s;
   animation-fill-mode: forwards;
 }
 
-.cookAi_input_hide {
+/* .cookAi_input_hide {
   border: solid 2px var(--white);
   height: 40px;
   width: 500px;
   border-radius: 20px;
   background-color: var(--bg);
   padding: 1em;
-}
+} */
 
-@keyframes searchbar {
+/* @keyframes searchbar {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
   }
-}
+} */
 
 .button_filter {
   opacity: 0;
@@ -695,6 +695,12 @@ Search page - SearchBar
   display: flex;
   justify-content: center;
 }
+.searchBar-div {
+  position: relative;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* border: 2px solid blue; */
+}
 
 /* ====================
 Search page - Filter
@@ -702,30 +708,29 @@ Search page - Filter
 .buttonSearchBar {
   position: absolute;
   background: var(--white);
-  color: var(--text);
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
   line-height: 36px;
   text-decoration: none;
   white-space: nowrap;
-  margin-top: -25px;
-  margin-right: -5px;
   padding: 0 10px;
   border: 2px solid var(--white);
   border-radius: 20px 0 20px 0;
   transition: all 0.3s ease;
   cursor: pointer;
   z-index: 5;
-  opacity: 0;
   animation-name: searchbar;
   animation-duration: 3s;
-  animation-delay: 7.5s;
+  animation-delay: 0s;
   animation-fill-mode: forwards;
 }
 
 .buttonSearchBar:hover {
   background: var(--dark_accent);
-  color: #fff;
+  color: var(--white);
 }
-
+/* 
 .buttonSearchBar_hide {
   position: absolute;
   background: var(--white);
@@ -741,18 +746,14 @@ Search page - Filter
   transition: all 0.3s ease;
   cursor: pointer;
   z-index: 5;
-}
-
-.buttonSearchBar_hide:hover {
-  background: var(--dark_accent);
-  color: #fff;
-}
+} */
 
 /* Highest div of filter */
 .filterfield {
   width: 100%;
-  position: absolute;
-  right: 5px;
+  /* position: absolute;
+  top: 5px;
+  right: 5px; */
   display: flex;
   justify-content: flex-end;
 }
